@@ -1,8 +1,9 @@
 var jquery = require('jquery');
 var moment = require('moment');
 var fullcalendar = require('fullcalendar');
+var http = require('http');
 
-//TODO: flytt dette til egen fil
+//TODO: dette trenger masse reformattering
 
 var myEvent = {
             title: 'My Event',
@@ -34,6 +35,33 @@ $(document).ready(function() {
   });
 
   $('#click').click(function() {
-    $('#calendar').fullCalendar('renderEvent', myEvent, true);
+    getJSON();
   });
 });
+
+function getJSON() {
+  http.get('/api/course', function(res){
+    var body = '';
+
+    res.on('data', function(chunk){
+        body += chunk;
+    });
+
+    res.on('end', function(){
+        var response = JSON.parse(body);
+        console.log("Got a response: ", response);
+        _addEvtFromJSON(response);
+    });
+  }).on('error', function(e){
+        console.log("Got an error: ", e);
+  });
+}
+
+function _addEvtFromJSON(json) {
+  var newEvent = {
+    title: json.title,
+    start: json.start,
+    end: json.end
+  };
+  $('#calendar').fullCalendar('renderEvent', newEvent, false);
+}
