@@ -5,5 +5,13 @@ module.exports = {
   output: {
     path: __dirname + '/public/javascripts',
     filename: 'scripts.bundle.js'
-  }
+  },
+  plugins: [
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
+        })
+    ]
 };
+
+//hva med public output path??
