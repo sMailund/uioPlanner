@@ -72,7 +72,8 @@ function _parseActivityText(activityArray) {
   return activityArray.map(function(text) {
     let innerjson = {};
     let splitted = text.split(" - ");
-    innerjson[splitted[0]] = _parseTime(splitted[1]);
+    innerjson.title = splitted[0];
+    innerjson.time = _parseTime(splitted[1]);
     return innerjson;
   });
 }
@@ -83,17 +84,46 @@ function _parseTime(inputText) {
   //console.log(days)
   return days.map(function(day) {
     let when = {};
-    let hours = {};
+
     let timeText = day.split(" ");
     let hoursTextSplitted = timeText[1].split("-");
 
-    hours.start = hoursTextSplitted[0];
-    hours.end = hoursTextSplitted[1];
-
-    when.day = timeText[0];
-    when.hours = hours;
+    when.start = _createISO8601(timeText[0], hoursTextSplitted[0]);
+    when.end = _createISO8601(timeText[0], hoursTextSplitted[1]);
     return when;
   });
+}
+
+//creates an ISO8601 string that the calendar-module uses to create events.
+//because we only care about rendering a single week and the calendar needs
+//a specific date to render, may 1st 2017 is used as the standard first day of the week
+//and later days of the week is counted from the monday
+function _createISO8601(day, hours) {
+  let dayNum; //weekday expressed in number
+
+  //find dayNum from the input string
+  switch(day) {
+    case 'ma':
+      dayNum = 1;
+      break;
+    case 'ti':
+      dayNum = 2;
+      break;
+    case 'on':
+      dayNum = 3;
+      break;
+    case 'to':
+      dayNum = 4;
+      break;
+    case 'fr':
+      dayNum = 5;
+      break;
+    default:
+      throw "invalid date in _createISO8601: " + day;
+    }
+
+    //create and return the date-string
+    return '2017-05-0' + dayNum + 'T' + hours;
 }
 
 function _getActivitiesHeadings(elements) {
@@ -120,8 +150,7 @@ function _getActivitiesText(elements) {
     }));
   });
 }
-/*
+
 getActivities("http://www.uio.no/studier/emner/matnat/ifi/INF1010/v17/timeplan/index.html")
 .then(result => console.log(JSON.stringify(result, null, 3))) //success
 .catch(() => console.log("Error getting activities")); //failure
-*/
