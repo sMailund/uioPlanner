@@ -1,10 +1,14 @@
-var express = require('express');
-var router = express.Router();
+/*jshint esversion: 6 */
+
+const express = require('express');
+const router = express.Router();
+const pgp = require('pg-promise')();
+
+const db = pgp('postgres://test_user:pleaseIgnroe@localhost:5432/planner');
+
 
 //test data
-//TODO: apien burde heller sende ting i dette formatet,
-//enn sånn det kommer fra scraper
-var output = {
+let output = {
   "Fellesundervisning": [
       {
          "title": "Forelesninger",
@@ -25,7 +29,14 @@ var output = {
 
 
 router.get('/', function(req, res, next) {
-  res.json(output);
+  console.log(req.query.code);
+  db.query("SELECT * FROM courses WHERE coursecode = \'$1#\'", [req.query.code])
+  .then(function(result) {
+    //console.log("got result: " + JSON.stringify(result));
+    res.json(result);
+  }).catch(function(error) {
+    console.log("error: " + error);
+  });
 });
 
 module.exports = router;
