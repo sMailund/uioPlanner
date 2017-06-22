@@ -18,18 +18,18 @@ $(document).ready(function() {
   $('#calendar').fullCalendar({
           // put your options and callbacks here
           defaultView: 'basicWeek', //TODO: bytte til timelineWeek? isåfall må du sjekke lisensgreier
-          defaultDate: '2014-06-12',
+          defaultDate: '2017-05-01',
           firstDay: 1, //første dag er mandag
           timeFormat: 'H(:mm)', //24-timersklokke
           events: [
     				{
     					title: 'All Day Event',
-    					start: '2014-06-01'
+    					start: '2017-05-01'
     				},
     				{
     					title: 'Long Event',
-    					start: '2014-06-07',
-    					end: '2014-06-10'
+    					start: '2017-05-02',
+    					end: '2017-05-03'
     				}
           ]
   });
@@ -38,7 +38,7 @@ $(document).ready(function() {
     getJSON();
   });
 });
-
+//TODO: burde denne byttes ut med $.ajax?
 function getJSON() {
   http.get('/api/course', function(res){
     var body = '';
@@ -50,10 +50,23 @@ function getJSON() {
     res.on('end', function(){
         var response = JSON.parse(body);
         console.log("Got a response: ", response);
-        _addEvtFromJSON(response);
+        _parseActivitesJSON(response);
     });
   }).on('error', function(e){
         console.log("Got an error: ", e);
+  });
+}
+
+//TODO: gjør dette mer elegant
+function _parseActivitesJSON(json) {
+  console.log(json);
+  json.Fellesundervisning[0].time.forEach(function(event) {
+    var eventJSON = {
+      title: json.Fellesundervisning[0].title,
+      start: event.start,
+      end: event.end
+    };
+    _addEvtFromJSON(eventJSON);
   });
 }
 
