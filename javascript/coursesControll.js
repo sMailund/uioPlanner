@@ -27,9 +27,9 @@ function _getJSON(course) {
 
     res.on('end', function(){
         let response = JSON.parse(body);
-        numberOfCourses++;
         courses[numberOfCourses] = response; //add json to courses
         _createCourseBox(numberOfCourses);
+        numberOfCourses++;
     });
   }).on('error', function(e){
         console.log("Got an error: ", e);
