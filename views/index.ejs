@@ -2,16 +2,24 @@
 <head>
   <link rel='stylesheet' href='/stylesheets/fullcalendar/fullcalendar.css' />
   <script src='/javascripts/scripts.bundle.js' ></script>
+
+  <!--TODO: flytt denne til egen fil-->
+  <style>
+  #courseSearchBox {
+      resize: none;
+  }
+  </style>
 </head>
 <body>
-  <p>
-    hello world
-  </p>
-  <button id="addCourse">Add Course</button>
+  <div id="addCourseDiv">
+    <textarea rows="1" cols="30" id="courseSearchBox"></textarea>
+    <button id="addCourse">Add Course</button>
+  </div>
   <div id="courses">
 
   </div>
   <button id="click">add lecture</button>
+  <button id="loadpg">load course</button>
   <div id='calendar'></div>
 
 </body>
