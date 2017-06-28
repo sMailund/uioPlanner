@@ -8,14 +8,9 @@ let http = require('http');
 let courses = [];
 let numberOfCourses = 0;
 
-//TODO: er det en bedre måte å legge til html?
 $(document).ready(function() {
   $("#addCourse").click(function() {
-    courses[0] = _getJSON($('#courseSearchBox').val());
-  });
-  //add click handler to button in added div
-  $("#courses").on("click", "button#addedbutton" + 1, function() {
-    external();
+    _getJSON($('#courseSearchBox').val());
   });
 });
 
