@@ -84,8 +84,8 @@ function _createActivities(activities, coursenum, div) {
   let activityNum = 0;
 
   activities.forEach(function(activity) {
-
-    let checkboxId = "course" + coursenum + "activity" + activityNum++;
+    activityNum++;
+    let checkboxId = div.prop("id") + "-a" + activityNum;
 
     div.append(
       $('<input />')
@@ -96,15 +96,21 @@ function _createActivities(activities, coursenum, div) {
     div.append(
       $('<label />')
         .attr("for", checkboxId)
-        .text(activity.title)
+        .text(activity.title) //TODO: labels burde også ha med tid
     );
 
-    div.append(
-      $('<br>')
-    );
+    div.append($('<br>'));
   });
 }
+
+//adding click event to dynamically added elements
+/*
+//add click handler to button in added div
+$("#courses").on("click", "button#addedbutton" + 1, function() {
+  external();
+});
 
 function external(number) {
   console.log(courses[number][0].activities);
 }
+*/
