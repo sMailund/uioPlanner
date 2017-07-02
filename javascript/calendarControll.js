@@ -13,3 +13,6 @@ $(document).ready(function() {
   });
 });
 
+exports.addEvents = function(events) {
+  $('#calendar').fullCalendar('renderEvents', events);
+};

@@ -1,11 +1,13 @@
 /*jshint esversion: 6 */
 
 //TODO: untangle the spaghetti
+//TODO: comments
 
 let jquery = require('jquery');
 let http = require('http');
+let calendar = require('./calendarControll.js');
 
-let courses = [];
+let courses = []; //TODO: Dette kan kanskje fjernes hvis den ikke brukes
 let numberOfCourses = 0;
 
 $(document).ready(function() {
@@ -30,6 +32,7 @@ function _getJSON(course) {
         courses[numberOfCourses] = response; //add json to courses
         _createCourseBox(numberOfCourses);
         numberOfCourses++;
+        console.log(courses);
     });
   }).on('error', function(e){
         console.log("Got an error: ", e);
@@ -86,21 +89,55 @@ function _createActivities(activities, coursenum, div) {
   activities.forEach(function(activity) {
     activityNum++;
     let checkboxId = div.prop("id") + "-a" + activityNum;
+    let spanId = checkboxId + "-span";
 
     div.append(
-      $('<input />')
-        .attr("type", "checkbox")
-        .attr("id", checkboxId)
+      $('<span />')
+        .attr("id", spanId)
+        .append(
+          $('<input />')
+            .attr("type", "checkbox")
+            .attr("id", checkboxId)
+            .data(activity)
+        )
+        .append(
+          $('<label />')
+          .attr("for", checkboxId)
+          .text(activity.title) //TODO: labels burde også ha med tid
+        )
     );
 
-    div.append(
-      $('<label />')
-        .attr("for", checkboxId)
-        .text(activity.title) //TODO: labels burde også ha med tid
-    );
+    console.log($("#" + checkboxId).data());
 
     div.append($('<br>'));
+
+    //fires when the checkbox is toggled
+    div.on("click", "input#" + checkboxId, function() {
+      if (this.checked) {
+        //get data assosiated with element and render event
+        _createEventObject(($("#" + this.id).data()));
+      } else {
+        //TODO: slett kalender event her
+        console.log("unchecked");
+      }
+      //console.log($("#" + this.id).data());
+    });
   });
+}
+
+function _createEventObject(json) {
+  let events = [];
+
+  json.time.forEach(function(time) {
+    let event = {
+      title: json.title,
+      start: time.start,
+      end: time.end
+    };
+    events.push(event);
+  });
+
+  calendar.addEvents(events);
 }
 
 //adding click event to dynamically added elements
