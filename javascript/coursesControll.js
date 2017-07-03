@@ -32,7 +32,6 @@ function _getJSON(course) {
         courses[numberOfCourses] = response; //add json to courses
         _createCourseBox(numberOfCourses);
         numberOfCourses++;
-        console.log(courses);
     });
   }).on('error', function(e){
         console.log("Got an error: ", e);
@@ -107,38 +106,22 @@ function _createActivities(activities, coursenum, div) {
         )
     );
 
-    console.log($("#" + checkboxId).data());
-
     div.append($('<br>'));
 
     //fires when the checkbox is toggled
     div.on("click", "input#" + checkboxId, function() {
+      //finn data som hører til html-elementet
+      let eventData = $("#" + this.id).data();
+
       if (this.checked) {
-        //get data assosiated with element and render event
-        _createEventObject(($("#" + this.id).data()));
+        calendar.addEvents(eventData, coursenum); //vis eventen i kalenderen
       } else {
-        //TODO: slett kalender event her
-        console.log("unchecked");
+        calendar.removeEvents(eventData); //fjern eventen fra kalenderen
       }
-      //console.log($("#" + this.id).data());
     });
   });
 }
 
-function _createEventObject(json) {
-  let events = [];
-
-  json.time.forEach(function(time) {
-    let event = {
-      title: json.title,
-      start: time.start,
-      end: time.end
-    };
-    events.push(event);
-  });
-
-  calendar.addEvents(events);
-}
 
 //adding click event to dynamically added elements
 /*
