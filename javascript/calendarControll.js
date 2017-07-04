@@ -34,7 +34,7 @@ exports.removeEvents = function(eventJSON) {
 function _createEventsObject(json, courseNum) {
   let events = [];
 
-  json.time.forEach(function(time) {
+  json.timeISO.forEach(function(time) {
     let event = {
       id: _createId(json),
       title: json.title, //det burde også stå hvilket emne det gjelder

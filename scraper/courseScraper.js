@@ -89,7 +89,8 @@ function _parseActivityText(activityArray) {
     let innerjson = {};
     let splitted = text.split(" - ");
     innerjson.title = splitted[0];
-    innerjson.time = _parseTime(splitted[1]);
+    innerjson.timeRaw = splitted[1];
+    innerjson.timeISO = _parseTime(splitted[1]);
     return innerjson;
   });
 }
