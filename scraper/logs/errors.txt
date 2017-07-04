@@ -1,0 +1,5 @@
+
+Scraping results 2017-07-04T20:29:48.892Z
+Could not scrape: http://www.uio.no/studier/emner/matnat/math/MAT-INF3600/h17/timeplan/index.html
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF3490/h17/timeplan/index.html
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/IN1150/h17/timeplan/index.html

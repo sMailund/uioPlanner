@@ -9,19 +9,19 @@ const driver = new webdriver.Builder()
 
 exports.scrape = function(adress) {
   return new Promise(function(resolve, reject) {
-    try{
-      _getActivities(adress)
-      .then(function(result) {
-        if (result.length > 0) {
-          resolve(result);
-        } else {
-          reject("Scraper returned empty JSON");
-        }
-      });
-    }
-    catch(error) {
+    _getActivities(adress)
+    .then(function(result) {
+      if (typeof result == 'undefined') {
+        reject("Scraper returned undefined");
+      } else if (result.length === 0) {
+        reject("Scraper returned empty JSON");
+      } else {
+        resolve(result);
+      }
+    })
+    .catch(function(error) {
       reject(error);
-    }
+    });
   });
 };
 
@@ -59,7 +59,7 @@ function _getActivitiesWebElement(adress) {
       } else {
         //if else, something is wrong.
         //errors can be caught and dealt with on the receiving end
-        reject();
+        reject("Scraper failed to find correct div, most likely 404");
       }
     });
   });
@@ -169,10 +169,10 @@ function _getActivitiesText(elements) {
   });
 }
 
-
-_getActivities("http://www.uio.no/studier/emner/matnat/ifi/IN1000/h17/timeplan/index.html")
+/*
+exports.scrape("http://www.uio.no/studier/emner/matnat/its/UNIK9420/h17/timeplan/index.html")
 .then(result => console.log(JSON.stringify(result, null, 3))) //success
 .catch(() => console.log("Error getting activities")); //failure
-
+*/
 
 //TODO: fiks alle emnene som ikke kan skrapes

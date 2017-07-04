@@ -6,7 +6,11 @@ const fs = require("fs");
 
 const semester = "h17";
 const entry = "http://www.uio.no/studier/emner/matnat/ifi/" +
-"?filter.levl=bachelor&filter.semester=" + semester;
+"?filter.level=bachelor&filter.semester=" + semester;
+
+const baseOutput = "./scraper/logs/";
+const resultFileName = baseOutput + "results.txt";
+const errorFileName = baseOutput + "errors.txt";
 
 let date = new Date();
 
@@ -14,8 +18,8 @@ function scrape() {
 
   console.log("Init...");
   date = new Date();
-  fs.appendFileSync("./errors.txt", "\nScraping results " + date.toISOString());
-  fs.appendFileSync("./results.txt", "\nScraping results " + date.toISOString());
+  fs.appendFileSync(resultFileName, "\nScraping results " + date.toISOString() + "\n");
+  fs.appendFileSync(errorFileName, "\nScraping results " + date.toISOString() + "\n");
 
   console.log("Finding links...");
 
@@ -41,10 +45,10 @@ function _iterateWithDelay(linkArray) {
 
   courseScraper.scrape(link)
   .then(function(result) {
-    fs.appendFileSync("./results.txt", JSON.stringify(result, null, 3));
+    fs.appendFileSync(resultFileName, JSON.stringify(result, null, 3) + "\n");
   })
   .catch(function(error) {
-    fs.appendFileSync("./errors.txt", "Could not scrape: " + link);
+    fs.appendFileSync(errorFileName, "Could not scrape: " + link + "\n");
   });
 
   if (linkArray.length > 0) {
