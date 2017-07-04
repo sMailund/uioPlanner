@@ -7,8 +7,26 @@ const driver = new webdriver.Builder()
     .forBrowser('phantomjs')
     .build();
 
+exports.scrape = function(adress) {
+  return new Promise(function(resolve, reject) {
+    try{
+      _getActivities(adress)
+      .then(function(result) {
+        if (result.length > 0) {
+          resolve(result);
+        } else {
+          reject("Scraper returned empty JSON");
+        }
+      });
+    }
+    catch(error) {
+      reject(error);
+    }
+  });
+};
+
 //returns JSON object with all activities in selected course
-function getActivities(adress) {
+function _getActivities(adress) {
   return _getActivitiesWebElement(adress) //get the activity div
   .then(function(activityBox) {
     //find titles and actities on page
@@ -47,8 +65,6 @@ function _getActivitiesWebElement(adress) {
   });
 }
 
-
-
 //creates a json object from the activities found on the page,
 //structured the same way as on the webpage
 function _createJSON(pageContent) {
@@ -61,7 +77,7 @@ function _createJSON(pageContent) {
     //add the elements to the json file
     elements[0].forEach(
       (heading, index) => json[heading] = _parseActivityText(elements[1][index])
-    ); //fortsett her
+    );
     return json;
   });
 }
@@ -80,8 +96,9 @@ function _parseActivityText(activityArray) {
 
 function _parseTime(inputText) {
 
-  let days = inputText.split(" og ");
-  //console.log(days)
+  //match multiple course times seperated with ", " and " og "
+  let days = inputText.split(/ og |, /g);
+
   return days.map(function(day) {
     let when = {};
 
@@ -151,6 +168,10 @@ function _getActivitiesText(elements) {
   });
 }
 
-getActivities("http://www.uio.no/studier/emner/matnat/ifi/INF1010/v17/timeplan/index.html")
+
+_getActivities("http://www.uio.no/studier/emner/matnat/ifi/IN1000/h17/timeplan/index.html")
 .then(result => console.log(JSON.stringify(result, null, 3))) //success
 .catch(() => console.log("Error getting activities")); //failure
+
+
+//TODO: fiks alle emnene som ikke kan skrapes
