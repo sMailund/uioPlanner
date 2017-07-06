@@ -24,9 +24,14 @@ function scrape() {
   console.log("Finding links...");
 
   courseFinder.getCourseLinks(entry)
-  .then(function(links) {
-    return Promise.all(links.map(link =>
-      link.concat(semester + "/timeplan/index.html")));
+  .then(function(courses) {
+    return Promise.all(
+      courses.map(function(course) {
+        let obj = course;
+        obj.link = obj.link.concat(semester + "/timeplan/index.html");
+        return obj;
+      })
+    );
   })
   .then(function(links) {
     console.log("Done. Found " + links.length + " links.");
@@ -37,10 +42,10 @@ function scrape() {
 
 //gå gjennom alle linkene på siden med litt forsinkelse mellom hver forbindelse
 //for å passe på at scriptet ikke sprenger nettforbindelsen hvis noe går galt
-function _iterateWithDelay(linkArray) {
+function _iterateWithDelay(courses) {
 
-  console.log(linkArray.length + " remaining...");
-  let link = linkArray.pop();
+  console.log(courses.length + " remaining...");
+  let link = courses.pop().link;
   console.log("Scraping " + link);
 
   courseScraper.scrape(link)
@@ -51,9 +56,9 @@ function _iterateWithDelay(linkArray) {
     fs.appendFileSync(errorFileName, "Could not scrape: " + link + "\n");
   });
 
-  if (linkArray.length > 0) {
+  if (courses.length > 0) {
     setTimeout(function() {
-      _iterateWithDelay(linkArray);
+      _iterateWithDelay(courses);
     }, 5000);
   } else {
     console.log("Done.");
