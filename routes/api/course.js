@@ -29,7 +29,7 @@ let output = {
 
 router.get('/', function(req, res, next) {
   console.log(req.query.code);
-  db.query("SELECT * FROM courses WHERE courseID = \'$1#\'", [req.query.code])
+  db.query("SELECT * FROM courses WHERE course_id = \'$1#\'", [req.query.code])
   .then(function(result) {
     //console.log("got result: " + JSON.stringify(result));
     res.json(result);

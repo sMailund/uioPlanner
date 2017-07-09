@@ -30970,7 +30970,7 @@ function _createCourseBox(number) {
     .attr("id", "course" + number)
       .append(
         $("<h2 />")
-        .text(courses[number][0].courseID)
+        .text(courses[number][0].course_id)
       )
       .append(
         $('<div />')
