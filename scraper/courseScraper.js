@@ -97,8 +97,8 @@ function _parseActivityText(activityArray) {
 
 function _parseTime(inputText) {
 
-  //match multiple course times seperated with ", " and " og "
-  let days = inputText.split(/ og |, /g);
+  //match multiple course times seperated with " and ", ", " and " og " ;)
+  let days = inputText.split(/ og |, | and /g);
 
   return days.map(function(day) {
     let when = {};
@@ -175,7 +175,7 @@ function _getActivitiesText(elements) {
 }
 
 /*
-exports.scrape("http://www.uio.no/studier/emner/matnat/math/MAT-INF4300/h17/timeplan/index.html")
+exports.scrape("http://www.uio.no/studier/emner/matnat/its/UNIK4800/h17/timeplan/index.html")
 .then(result => console.log(JSON.stringify(result, null, 3))) //success
 .catch(error => console.log("Error: " + error)); //failure
 */
