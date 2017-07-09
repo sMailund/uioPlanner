@@ -122,18 +122,23 @@ function _createISO8601(day, hours) {
   //find dayNum from the input string
   switch(day) {
     case 'ma':
+    case 'Mon':
       dayNum = 1;
       break;
     case 'ti':
+    case 'Tue':
       dayNum = 2;
       break;
     case 'on':
+    case 'Wed':
       dayNum = 3;
       break;
     case 'to':
+    case 'Thu':
       dayNum = 4;
       break;
     case 'fr':
+    case 'Fri':
       dayNum = 5;
       break;
     default:
@@ -170,8 +175,8 @@ function _getActivitiesText(elements) {
 }
 
 /*
-exports.scrape("http://www.uio.no/studier/emner/matnat/its/UNIK9700/h17/timeplan/index.html")
+exports.scrape("http://www.uio.no/studier/emner/matnat/math/MAT-INF4300/h17/timeplan/index.html")
 .then(result => console.log(JSON.stringify(result, null, 3))) //success
-.catch(() => console.log("Error getting activities")); //failure
+.catch(error => console.log("Error: " + error)); //failure
 */
 //TODO: fiks alle emnene som ikke kan skrapes
