@@ -13,7 +13,7 @@ exports.scrape = function(adress) {
     .then(function(result) {
       if (typeof result == 'undefined') {
         reject("Scraper returned undefined");
-      } else if (result.length === 0) {
+      } else if (Object.keys(result).length === 0) {
         reject("Scraper returned empty JSON");
       } else {
         resolve(result);
@@ -170,9 +170,8 @@ function _getActivitiesText(elements) {
 }
 
 /*
-exports.scrape("http://www.uio.no/studier/emner/matnat/its/UNIK9420/h17/timeplan/index.html")
+exports.scrape("http://www.uio.no/studier/emner/matnat/its/UNIK9700/h17/timeplan/index.html")
 .then(result => console.log(JSON.stringify(result, null, 3))) //success
 .catch(() => console.log("Error getting activities")); //failure
 */
-
 //TODO: fiks alle emnene som ikke kan skrapes
