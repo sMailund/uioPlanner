@@ -65,11 +65,31 @@ function _createCourseBox(json, courseNum) {
       )
     );
 
+    _parseActivities(courseNum, json);
+
+    //add click handler to button in added div
+    $("#course" + courseNum).on("click", "button#addLecture", function() {
+      external(courseNum);
+    });
+}
+
+function _parseActivities(courseNum, json) {
     let fellesAktiviteter = json[0].activities.Fellesundervisning;
     if (fellesAktiviteter) { //sjekk om det er noen fellesAktiviteter å vise
       //og vis dem i riktig div hvis det er noen
       let fellesDiv = $("#course" + courseNum + "felles");
       _createActivities(fellesAktiviteter,
+        courseNum,
+        fellesDiv);
+    }
+
+    //hacky løsning på at noen kurs er på engelsk, kan forbedres, men funker
+    let plenary = json[0].activities["Plenary sessions"];
+    if (plenary) { //sjekk om det er noen fellesAktiviteter å vise
+      //og vis dem i riktig div hvis det er noen
+      let fellesDiv = $("#course" + courseNum + "felles");
+      fellesDiv.children("h3").text("Plenary Sessions");
+      _createActivities(plenary,
         courseNum,
         fellesDiv);
     }
@@ -83,10 +103,15 @@ function _createCourseBox(json, courseNum) {
         gruppeDiv);
     }
 
-    //add click handler to button in added div
-    $("#course" + courseNum).on("click", "button#addLecture", function() {
-      external(courseNum);
-    });
+    let group = json[0].activities["Group sessions"];
+    if (group) { //sjekk om det er noen gruppeAktiviteter å vise
+      //og vis dem i riktig div hvis det er noen
+      let gruppeDiv = $("#course" + courseNum + "gruppe");
+      gruppeDiv.children("h3").text("Group Sessions");
+      _createActivities(group,
+        courseNum,
+        gruppeDiv);
+    }
 }
 
 function _createActivities(activities, coursenum, div) {
