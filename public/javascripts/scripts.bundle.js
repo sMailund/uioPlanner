@@ -30931,7 +30931,6 @@ let jquery = __webpack_require__(6);
 let http = __webpack_require__(138);
 let calendar = __webpack_require__(158);
 
-let courses = []; //TODO: Dette kan kanskje fjernes hvis den ikke brukes
 let numberOfCourses = 0;
 
 $(document).ready(function() {
@@ -30953,30 +30952,28 @@ function _getJSON(course) {
 
     res.on('end', function(){
         let response = JSON.parse(body);
-        courses[numberOfCourses] = response; //add json to courses
-        _createCourseBox(numberOfCourses);
-        numberOfCourses++;
+        _createCourseBox(response, numberOfCourses++);
     });
   }).on('error', function(e){
         console.log("Got an error: ", e);
   });
 }
 
-function _createCourseBox(number) {
+function _createCourseBox(json, courseNum) {
 
   //create new div
   $("#courses").append(
     $('<div />')
-    .attr("id", "course" + number)
+    .attr("id", "course" + courseNum)
     .addClass("courseContainer")
-    .data("courseId", courses[number][0].course_id)
+    .data("courseId", json[0].course_id)
       .append(
         $("<h2 />")
-        .text(courses[number][0].course_id)
+        .text(json[0].course_id)
       )
       .append(
         $('<div />')
-        .attr("id", "course" + number + "felles")
+        .attr("id", "course" + courseNum + "felles")
         .append(
           $('<h3 />')
           .text("Fellesundervisning")
@@ -30984,7 +30981,7 @@ function _createCourseBox(number) {
       )
       .append(
         $('<div />')
-        .attr("id", "course" + number + "gruppe")
+        .attr("id", "course" + courseNum + "gruppe")
         .append(
           $('<h3 />')
           .text("Gruppeundervisning")
@@ -30992,27 +30989,27 @@ function _createCourseBox(number) {
       )
     );
 
-    let fellesAktiviteter = courses[number][0].activities.Fellesundervisning;
+    let fellesAktiviteter = json[0].activities.Fellesundervisning;
     if (fellesAktiviteter) { //sjekk om det er noen fellesAktiviteter å vise
       //og vis dem i riktig div hvis det er noen
-      let fellesDiv = $("#course" + number + "felles");
+      let fellesDiv = $("#course" + courseNum + "felles");
       _createActivities(fellesAktiviteter,
-        number,
+        courseNum,
         fellesDiv);
     }
 
-    let gruppeAktiviteter = courses[number][0].activities.Gruppeundervisning;
+    let gruppeAktiviteter = json[0].activities.Gruppeundervisning;
     if (gruppeAktiviteter) { //sjekk om det er noen gruppeAktiviteter å vise
       //og vis dem i riktig div hvis det er noen
-      let gruppeDiv = $("#course" + number + "gruppe");
+      let gruppeDiv = $("#course" + courseNum + "gruppe");
       _createActivities(gruppeAktiviteter,
-        number,
+        courseNum,
         gruppeDiv);
     }
 
     //add click handler to button in added div
-    $("#course" + number).on("click", "button#addLecture", function() {
-      external(number);
+    $("#course" + courseNum).on("click", "button#addLecture", function() {
+      external(courseNum);
     });
 }
 
