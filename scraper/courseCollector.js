@@ -3,6 +3,7 @@
 const courseFinder = require("./courseFinder.js");
 const courseScraper = require("./courseScraper.js");
 const fs = require("fs");
+const db = require("./database/dbControll.js");
 
 const semester = "h17";
 const entry = "http://www.uio.no/studier/emner/matnat/ifi/" +
@@ -16,7 +17,9 @@ let date = new Date();
 
 function scrape() {
 
+
   console.log("Init...");
+  db.init();
   date = new Date();
   fs.appendFileSync(resultFileName, "\nScraping results " + date.toISOString() + "\n");
   fs.appendFileSync(errorFileName, "\nScraping results " + date.toISOString() + "\n");
@@ -45,15 +48,20 @@ function scrape() {
 function _iterateWithDelay(courses) {
 
   console.log(courses.length + " remaining...");
-  let link = courses.pop().link;
-  console.log("Scraping " + link);
+  let course = courses.pop();
 
-  courseScraper.scrape(link)
+  let split = course.title.split(" - ");
+  let code = split[0];
+  let title = split[1];
+  console.log("Scraping " + course.link);
+
+  courseScraper.scrape(course.link)
   .then(function(result) {
     fs.appendFileSync(resultFileName, JSON.stringify(result, null, 3) + "\n");
+    db.addNewCourse(code, title, result);
   })
   .catch(function(error) {
-    fs.appendFileSync(errorFileName, "Could not scrape: " + link + "\n");
+    fs.appendFileSync(errorFileName, "Could not scrape: " + course.link + "\n");
   });
 
   if (courses.length > 0) {
