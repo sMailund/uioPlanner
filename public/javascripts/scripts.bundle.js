@@ -33977,6 +33977,7 @@ $(document).ready(function() {
           defaultDate: '2017-05-01',
           firstDay: 1, //første dag er mandag
           timeFormat: 'H(:mm)', //24-timersklokke
+          weekends: false,
   });
 });
 
