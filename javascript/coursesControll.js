@@ -44,6 +44,8 @@ function _createCourseBox(number) {
   $("#courses").append(
     $('<div />')
     .attr("id", "course" + number)
+    .addClass("courseContainer")
+    .data("courseId", courses[number][0].course_id)
       .append(
         $("<h2 />")
         .text(courses[number][0].course_id)
@@ -66,15 +68,23 @@ function _createCourseBox(number) {
       )
     );
 
-    let fellesDiv = $("#course" + number + "felles");
-    _createActivities(courses[number][0].activities.Fellesundervisning,
-                      number,
-                      fellesDiv);
+    let fellesAktiviteter = courses[number][0].activities.Fellesundervisning;
+    if (fellesAktiviteter) { //sjekk om det er noen fellesAktiviteter å vise
+      //og vis dem i riktig div hvis det er noen
+      let fellesDiv = $("#course" + number + "felles");
+      _createActivities(fellesAktiviteter,
+        number,
+        fellesDiv);
+    }
 
-    let gruppeDiv = $("#course" + number + "gruppe");
-    _createActivities(courses[number][0].activities.Gruppeundervisning,
-                      number,
-                      gruppeDiv);
+    let gruppeAktiviteter = courses[number][0].activities.Gruppeundervisning;
+    if (gruppeAktiviteter) { //sjekk om det er noen gruppeAktiviteter å vise
+      //og vis dem i riktig div hvis det er noen
+      let gruppeDiv = $("#course" + number + "gruppe");
+      _createActivities(gruppeAktiviteter,
+        number,
+        gruppeDiv);
+    }
 
     //add click handler to button in added div
     $("#course" + number).on("click", "button#addLecture", function() {
@@ -97,12 +107,12 @@ function _createActivities(activities, coursenum, div) {
           $('<input />')
             .attr("type", "checkbox")
             .attr("id", checkboxId)
-            .data(activity)
+            .data("activities", activity)
         )
         .append(
           $('<label />')
           .attr("for", checkboxId)
-          .text(activity.title) //TODO: labels burde også ha med tid
+          .text(activity.title + " - " + activity.timeRaw) //TODO: labels burde også ha med tid
         )
     );
 
@@ -111,26 +121,15 @@ function _createActivities(activities, coursenum, div) {
     //fires when the checkbox is toggled
     div.on("click", "input#" + checkboxId, function() {
       //finn data som hører til html-elementet
-      let eventData = $("#" + this.id).data();
+      let clickedElement = $("#" + this.id);
+      let eventData = clickedElement.data("activities");
+      let courseName = clickedElement.parents(".courseContainer").data("courseId");
 
       if (this.checked) {
-        calendar.addEvents(eventData, coursenum); //vis eventen i kalenderen
+        calendar.addEvents(eventData, courseName, coursenum); //vis eventen i kalenderen
       } else {
         calendar.removeEvents(eventData); //fjern eventen fra kalenderen
       }
     });
   });
 }
-
-
-//adding click event to dynamically added elements
-/*
-//add click handler to button in added div
-$("#courses").on("click", "button#addedbutton" + 1, function() {
-  external();
-});
-
-function external(number) {
-  console.log(courses[number][0].activities);
-}
-*/

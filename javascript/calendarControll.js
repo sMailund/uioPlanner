@@ -21,8 +21,8 @@ $(document).ready(function() {
   });
 });
 
-exports.addEvents = function(eventJSON, courseNum) {
-  let events = _createEventsObject(eventJSON, courseNum);
+exports.addEvents = function(eventJSON, courseName, courseNum) {
+  let events = _createEventsObject(eventJSON, courseName, courseNum);
   $('#calendar').fullCalendar('renderEvents', events);
 };
 
@@ -31,13 +31,13 @@ exports.removeEvents = function(eventJSON) {
   $('#calendar').fullCalendar('removeEvents', eventId);
 };
 
-function _createEventsObject(json, courseNum) {
+function _createEventsObject(json, courseName, courseNum) {
   let events = [];
 
   json.timeISO.forEach(function(time) {
     let event = {
       id: _createId(json),
-      title: json.title, //det burde også stå hvilket emne det gjelder
+      title: courseName + " - " + json.title, //det burde også stå hvilket emne det gjelder
       start: time.start,
       end: time.end,
       color: colors[courseNum]
