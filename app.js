@@ -6,7 +6,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
+//TODO: bedre routing
 var api_course = require('./routes/api/course');
+var api_list = require('./routes/api/courseList');
 
 var app = express();
 
@@ -24,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/api/course', api_course);
+app.use('/api/courseList', api_list);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
