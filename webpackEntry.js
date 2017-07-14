@@ -1,1 +1,1 @@
-require('./javascript/coursesControll.js');
+window.searchControll = require('./javascript/searchControll.js');

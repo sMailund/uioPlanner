@@ -9,16 +9,10 @@ let calendar = require('./calendarControll.js');
 
 let numberOfCourses = 0;
 
-$(document).ready(function() {
-  $("#addCourse").click(function() {
-    _getJSON($('#courseSearchBox').val());
-  });
-});
-
 //TODO: error handling
 
-function _getJSON(course) {
-  let url = '/api/course?code=' + $('#courseSearchBox').val();
+function renderCourse(courseCode) {
+  let url = '/api/course?code=' + courseCode;
   http.get(url, function(res){
     let body = '';
 
@@ -67,6 +61,7 @@ function _createCourseBox(json, courseNum) {
 
     _parseActivities(courseNum, json);
 
+    //TODO: kan denne fjernes?
     //add click handler to button in added div
     $("#course" + courseNum).on("click", "button#addLecture", function() {
       external(courseNum);
@@ -155,3 +150,7 @@ function _createActivities(activities, coursenum, div) {
     });
   });
 }
+
+module.exports = {
+  renderCourse
+};

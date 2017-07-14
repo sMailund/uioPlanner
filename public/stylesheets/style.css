@@ -1,8 +1,20 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.overlay {
+  position: absolute;
+  z-index: 10000; /*draw absolutely on top (to overcome z-index 9999 from fullcalendar)*/
 }
 
-a {
-  color: #00B7FF;
+.suggestionBox {
+  background-color: grey;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  padding: 12px 20px 12px 20px;
+}
+
+.suggestionBox:hover {
+  background-color: red;
+}
+
+#truncated {
+  background-color: grey; /* disable hover for truncated results */
 }

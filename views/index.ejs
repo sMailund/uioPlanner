@@ -1,6 +1,7 @@
 <html>
 <head>
   <link rel='stylesheet' href='/stylesheets/fullcalendar/fullcalendar.css' />
+  <link rel='stylesheet' href='/stylesheets/style.css' />
   <script src='/javascripts/scripts.bundle.js' ></script>
 
   <!--TODO: flytt denne til egen fil-->
@@ -12,7 +13,8 @@
 </head>
 <body>
   <div id="addCourseDiv">
-    <textarea rows="1" cols="30" id="courseSearchBox"></textarea>
+    <input type="text" id="courseSearchBox" onkeyup="window.searchControll.renderSuggestions()"/>
+    <div id="results" class="overlay"/>
     <button id="addCourse">Add Course</button>
   </div>
   <div id="courses">
