@@ -30984,12 +30984,6 @@ function _createCourseBox(json, courseNum) {
     );
 
     _parseActivities(courseNum, json);
-
-    //TODO: kan denne fjernes?
-    //add click handler to button in added div
-    $("#course" + courseNum).on("click", "button#addLecture", function() {
-      external(courseNum);
-    });
 }
 
 function _parseActivities(courseNum, json) {
