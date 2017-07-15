@@ -32,6 +32,19 @@ exports.removeEvents = function(eventJSON) {
   $('#calendar').fullCalendar('removeEvents', eventId);
 };
 
+exports.addHover = function(eventJSON, courseName) {
+  let events = _createEventsObject(eventJSON, courseName, 0);
+  events.map(event => {
+    event.id = 'hover';
+    event.color = "#b5b5b5"; //color event in grey
+  });
+  $('#calendar').fullCalendar('renderEvents', events);
+};
+
+exports.removeHover = function() {
+  $('#calendar').fullCalendar('removeEvents', 'hover');
+};
+
 function _createEventsObject(json, courseName, courseNum) {
   let events = [];
 

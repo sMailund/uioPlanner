@@ -129,6 +129,19 @@ function _createActivities(activities, coursenum, div) {
 
     div.append($('<br>'));
 
+    //create shadow event when activity is hovered to make planning easier
+    $('#' + spanId).hover(function() {
+      let hoveredActivity = $('#' + this.id).find("input");
+      let eventData = hoveredActivity.data("activities");
+      let courseName = hoveredActivity.parents(".courseContainer").data("courseId");
+      if (!hoveredActivity.is(":checked")) {
+        calendar.addHover(eventData, courseName);
+      }
+    },
+    function() { //fires when the activity is unhovered
+      calendar.removeHover();
+    });
+
     //fires when the checkbox is toggled
     div.on("click", "input#" + checkboxId, function() {
       //finn data som hører til html-elementet
@@ -138,8 +151,10 @@ function _createActivities(activities, coursenum, div) {
 
       if (this.checked) {
         calendar.addEvents(eventData, courseName, coursenum); //vis eventen i kalenderen
+        calendar.removeHover();
       } else {
         calendar.removeEvents(eventData); //fjern eventen fra kalenderen
+        calendar.addHover(eventData, courseName);
       }
     });
   });
