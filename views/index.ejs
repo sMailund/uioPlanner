@@ -12,14 +12,18 @@
   </style>
 </head>
 <body>
-  <div id="addCourseDiv">
-    <input type="text" id="courseSearchBox" onkeyup="window.searchControll.renderSuggestions()"/>
-    <div id="results" class="overlay"/>
-  </div>
-  <div id="courses">
 
+  <div id="top">
+    <div id="addCourseDiv">
+      <input type="text" id="courseSearchBox" onkeyup="window.searchControll.renderSuggestions()"/>
+      <div id="results" class="overlay"></div>
+    </div>
   </div>
-  <div id='calendar'></div>
+
+  <div id="middle">
+    <div id="courses"></div>
+    <div id='calendar'></div>
+  </div>
 
 </body>
 </html>

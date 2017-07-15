@@ -15,6 +15,10 @@
   background-color: red;
 }
 
+#middle {
+  display: flex;
+}
+
 #truncated {
   background-color: grey; /* disable hover for truncated results */
 }
