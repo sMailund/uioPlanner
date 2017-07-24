@@ -1,7 +1,5 @@
 /*jshint esversion: 6 */
 
-//TODO: fiks feil hvor flere events kan fjernes samtidig
-
 const moment = require('moment');
 const fullcalendar = require('fullcalendar');
 const jquery = require('jquery');
@@ -34,8 +32,8 @@ exports.addEvents = function(eventJSON, courseName, courseNum) {
   $('#calendar').fullCalendar('renderEvents', events);
 };
 
-exports.removeEvents = function(eventJSON) {
-  let eventId = _createId(eventJSON);
+exports.removeEvents = function(eventJSON, courseName, courseNum) {
+  let eventId = _createId(eventJSON, courseName, courseNum);
   $('#calendar').fullCalendar('removeEvents', eventId);
 };
 
@@ -57,7 +55,7 @@ function _createEventsObject(json, courseName, courseNum) {
 
   json.timeISO.forEach(function(time) {
     let event = {
-      id: _createId(json),
+      id: _createId(json, courseName, courseNum),
       title: courseName + " - " + json.title, //det burde også stå hvilket emne det gjelder
       start: time.start,
       end: time.end,
@@ -69,7 +67,6 @@ function _createEventsObject(json, courseName, courseNum) {
   return events;
 }
 
-//TODO: id burde heller være noe mer unikt, her kan det kommer kollisjoner
-function _createId(json) {
-  return json.title;
+function _createId(json, courseName, courseNum) {
+  return courseNum + courseName + json.title;
 }

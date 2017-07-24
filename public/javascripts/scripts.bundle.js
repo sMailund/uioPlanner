@@ -34075,7 +34075,7 @@ function _createActivities(activities, coursenum, div) {
         calendar.addEvents(eventData, courseName, coursenum); //vis eventen i kalenderen
         calendar.removeHover();
       } else {
-        calendar.removeEvents(eventData); //fjern eventen fra kalenderen
+        calendar.removeEvents(eventData, courseName, coursenum); //fjern eventen fra kalenderen
         calendar.addHover(eventData, courseName);
       }
     });
@@ -34093,8 +34093,6 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {/*jshint esversion: 6 */
-
-//TODO: fiks feil hvor flere events kan fjernes samtidig
 
 const moment = __webpack_require__(0);
 const fullcalendar = __webpack_require__(161);
@@ -34128,8 +34126,8 @@ exports.addEvents = function(eventJSON, courseName, courseNum) {
   $('#calendar').fullCalendar('renderEvents', events);
 };
 
-exports.removeEvents = function(eventJSON) {
-  let eventId = _createId(eventJSON);
+exports.removeEvents = function(eventJSON, courseName, courseNum) {
+  let eventId = _createId(eventJSON, courseName, courseNum);
   $('#calendar').fullCalendar('removeEvents', eventId);
 };
 
@@ -34151,7 +34149,7 @@ function _createEventsObject(json, courseName, courseNum) {
 
   json.timeISO.forEach(function(time) {
     let event = {
-      id: _createId(json),
+      id: _createId(json, courseName, courseNum),
       title: courseName + " - " + json.title, //det burde også stå hvilket emne det gjelder
       start: time.start,
       end: time.end,
@@ -34163,9 +34161,8 @@ function _createEventsObject(json, courseName, courseNum) {
   return events;
 }
 
-//TODO: id burde heller være noe mer unikt, her kan det kommer kollisjoner
-function _createId(json) {
-  return json.title;
+function _createId(json, courseName, courseNum) {
+  return courseNum + courseName + json.title;
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
