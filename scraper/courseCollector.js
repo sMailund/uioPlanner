@@ -9,7 +9,7 @@ const semester = "h17";
 const entry = "http://www.uio.no/studier/emner/matnat/ifi/" +
 "?filter.semester=" + semester;
 
-const baseOutput = "./scraper/logs/";
+const baseOutput = "./logs/";
 //const resultFileName = baseOutput + "results.txt";
 const errorFileName = baseOutput + "errors.txt";
 
