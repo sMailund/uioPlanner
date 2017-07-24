@@ -60,10 +60,24 @@ body {
   resize: none;
 }
 
+#contact {
+  font-weight: 400;
+  font-size: 0.8rem;
+  padding-left: 6vw;
+  padding-bottom: 4px;
+}
+
 #header {
   margin-bottom: 1vw;
   font-size: 4.5em;
   font-weight: lighter;
+}
+
+#footer {
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height: auto;
 }
 
 #truncated {

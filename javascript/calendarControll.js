@@ -1,14 +1,16 @@
 /*jshint esversion: 6 */
 
+//TODO: fiks feil hvor flere events kan fjernes samtidig
+
 const moment = require('moment');
 const fullcalendar = require('fullcalendar');
 const jquery = require('jquery');
 
-const colors = ["#00FFFF",
-                "#FF8000",
-                "#FFFF00",
-                "#80FF00",
-                "#00FF00"];
+const colors = ["#09632d",
+                "#1c3144",
+                "#461220",
+                "#2f2d2e",
+                "#c33c54"];
 
 $(document).ready(function() {
   //TODO: formater kalenderen bedre
