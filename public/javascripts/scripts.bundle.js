@@ -34108,7 +34108,7 @@ $(document).ready(function() {
   //TODO: formater kalenderen bedre
   $('#calendar').fullCalendar({
           // put your options and callbacks here
-          defaultView: 'basicWeek', //TODO: bytte til timelineWeek? isåfall må du sjekke lisensgreier
+          defaultView: 'agendaWeek',
           defaultDate: '2017-05-01',
           firstDay: 1, //første dag er mandag
           height: "parent",
