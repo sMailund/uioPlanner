@@ -17,6 +17,7 @@ $(document).ready(function() {
           defaultView: 'basicWeek', //TODO: bytte til timelineWeek? isåfall må du sjekke lisensgreier
           defaultDate: '2017-05-01',
           firstDay: 1, //første dag er mandag
+          height: "parent",
           timeFormat: 'H(:mm)', //24-timersklokke
           weekends: false,
   });
