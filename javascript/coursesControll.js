@@ -114,6 +114,7 @@ function _createActivities(activities, coursenum, div) {
     div.append(
       $('<span />')
         .attr("id", spanId)
+        .addClass("courseSpan")
         .append(
           $('<input />')
             .attr("type", "checkbox")

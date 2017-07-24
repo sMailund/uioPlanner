@@ -34035,6 +34035,7 @@ function _createActivities(activities, coursenum, div) {
     div.append(
       $('<span />')
         .attr("id", spanId)
+        .addClass("courseSpan")
         .append(
           $('<input />')
             .attr("type", "checkbox")
@@ -34111,6 +34112,7 @@ $(document).ready(function() {
           defaultDate: '2017-05-01',
           firstDay: 1, //første dag er mandag
           height: "parent",
+          header: "", //fjern alle defaultgreier fra kalenderen
           timeFormat: 'H(:mm)', //24-timersklokke
           weekends: false,
   });
