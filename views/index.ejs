@@ -2,27 +2,29 @@
 <head>
   <link rel='stylesheet' href='/stylesheets/fullcalendar/fullcalendar.css' />
   <link rel='stylesheet' href='/stylesheets/style.css' />
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,400" rel="stylesheet" />
   <script src='/javascripts/scripts.bundle.js' ></script>
 </head>
 <body>
 
   <div id="wrapper">
+    <div id="content">
 
-    <div id="flex">
-
-      <div id="addCourseDiv" class="contentBox">
-        <input type="text" id="courseSearchBox" onkeyup="window.searchControll.renderSuggestions()"/>
-        <div id="results" class="overlay"></div>
-        <div id="courses"></div>
+      <div id="header">
+        semesterScheduler
       </div>
 
-      <div id="calendar"></div>
+      <div id="flex">
+        <div id="addCourseDiv" class="contentBox">
+          <input type="text" id="courseSearchBox" onkeyup="window.searchControll.renderSuggestions()"/>
+          <div id="results" class="overlay"></div>
+          <div id="courses"></div>
+        </div>
+        <div id="calendar"></div> <!--fullcalendar target -->
+      </div>
 
     </div>
-
   </div>
-
 
 </body>
 </html>
