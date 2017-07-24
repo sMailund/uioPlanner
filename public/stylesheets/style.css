@@ -39,7 +39,7 @@ body {
 
 #addCourseDiv {
   flex: 2;
-  margin-right: 7vw;
+  margin-right: 4vw;
   overflow-y: scroll;
   overflow-x:hidden;
 }
