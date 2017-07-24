@@ -19,15 +19,15 @@ body {
 }
 
 .suggestionBox {
-  background-color: grey;
-  border-color: black;
+  background-color: white;
+  border-color: #dddddd;
   border-style: solid;
   border-width: 1px;
   padding: 12px 20px 12px 20px;
 }
 
 .suggestionBox:hover {
-  background-color: red;
+  background-color: #ddd;
 }
 
 .contentBox {
@@ -81,7 +81,7 @@ body {
 }
 
 #truncated {
-  background-color: grey; /* disable hover for truncated results */
+  background-color: white; /* disable hover for truncated results */
 }
 
 #flex {
