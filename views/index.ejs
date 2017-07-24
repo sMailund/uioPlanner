@@ -13,17 +13,23 @@
 </head>
 <body>
 
-  <div id="top">
-    <div id="addCourseDiv">
-      <input type="text" id="courseSearchBox" onkeyup="window.searchControll.renderSuggestions()"/>
-      <div id="results" class="overlay"></div>
+  <div id="wrapper">
+
+    <div id="flex">
+
+
+      <div id="addCourseDiv">
+        <input type="text" id="courseSearchBox" onkeyup="window.searchControll.renderSuggestions()"/>
+        <div id="results" class="overlay"></div>
+        <div id="courses"></div>
+      </div>
+
+      <div id='calendar'></div>
+
     </div>
+
   </div>
 
-  <div id="middle">
-    <div id="courses"></div>
-    <div id='calendar'></div>
-  </div>
 
 </body>
 </html>
