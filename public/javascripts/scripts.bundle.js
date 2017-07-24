@@ -34107,13 +34107,16 @@ const colors = ["#00FFFF",
 $(document).ready(function() {
   //TODO: formater kalenderen bedre
   $('#calendar').fullCalendar({
-          // put your options and callbacks here
           defaultView: 'agendaWeek',
           defaultDate: '2017-05-01',
+          allDaySlot: false, //fjern seksjon for heldagseventer
           firstDay: 1, //første dag er mandag
-          height: "parent",
-          header: "", //fjern alle defaultgreier fra kalenderen
-          timeFormat: 'H(:mm)', //24-timersklokke
+          columnFormat: 'dddd', //bare hvis ukedagsnavn, ikke dato
+          minTime: '08:00:00', //tidligste time er kl 8
+          maxTime: '19:00:00', //og vis helt ned til kl 1 9
+          slotLabelFormat: 'H:mm', //24-timersklokke
+          height: 'parent',
+          header: '', //fjern alle defaultgreier fra kalenderen
           weekends: false,
   });
 });
