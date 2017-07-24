@@ -11,7 +11,6 @@ const colors = ["#09632d",
                 "#c33c54"];
 
 $(document).ready(function() {
-  //TODO: formater kalenderen bedre
   $('#calendar').fullCalendar({
           defaultView: 'agendaWeek',
           defaultDate: '2017-05-01',
