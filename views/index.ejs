@@ -4,13 +4,6 @@
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" />
   <script src='/javascripts/scripts.bundle.js' ></script>
-
-  <!--TODO: flytt denne til egen fil-->
-  <style>
-  #courseSearchBox {
-      resize: none;
-  }
-  </style>
 </head>
 <body>
 
@@ -18,14 +11,13 @@
 
     <div id="flex">
 
-
-      <div id="addCourseDiv">
+      <div id="addCourseDiv" class="contentBox">
         <input type="text" id="courseSearchBox" onkeyup="window.searchControll.renderSuggestions()"/>
         <div id="results" class="overlay"></div>
         <div id="courses"></div>
       </div>
 
-      <div id='calendar'></div>
+      <div id="calendar"></div>
 
     </div>
 
