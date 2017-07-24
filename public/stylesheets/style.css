@@ -39,7 +39,7 @@ body {
 
 #addCourseDiv {
   flex: 2;
-  margin-right: 7vw;
+  margin-right: 4vw;
   overflow-y: scroll;
   overflow-x:hidden;
 }
@@ -49,6 +49,10 @@ body {
   max-height: 100%;
 }
 
+#content {
+  padding: 2vw 6vw 0 6vw;
+}
+
 #courseSearchBox {
   padding: 10px 20px;
   font-size: 1.5em;
@@ -56,12 +60,17 @@ body {
   resize: none;
 }
 
+#header {
+  margin-bottom: 1vw;
+  font-size: 4.5em;
+  font-weight: lighter;
+}
+
 #truncated {
   background-color: grey; /* disable hover for truncated results */
 }
 
 #flex {
-  height: 75%;
   display: flex;
-  padding: 6vw;
+  height: 75%;
 }
