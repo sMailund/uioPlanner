@@ -154,7 +154,7 @@ function _createActivities(activities, coursenum, div) {
         calendar.addEvents(eventData, courseName, coursenum); //vis eventen i kalenderen
         calendar.removeHover();
       } else {
-        calendar.removeEvents(eventData); //fjern eventen fra kalenderen
+        calendar.removeEvents(eventData, courseName, coursenum); //fjern eventen fra kalenderen
         calendar.addHover(eventData, courseName);
       }
     });
