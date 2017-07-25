@@ -18,7 +18,7 @@ let date;
 function scrape() {
 
   console.log("Init...");
-  db.init(); //backup og rensk gammel database
+  db.init(); //lag midlertidig liste for å holde resultater
   date = new Date();
   //fs.appendFileSync(resultFileName, "\nScraping results " + date.toISOString() + "\n");
   fs.appendFileSync(errorFileName, "\nScraping results " + date.toISOString() + "\n");
@@ -77,7 +77,10 @@ function _iterateWithDelay(courses) {
     }, 5000);
   } else {
     //rekursjonsbunn
-    console.log("Done.");
+    console.log("updating db...");
+    db.backupAndMove()
+    .then(() => console.log("Done."))
+    .catch((error) => console.log("Error on updating db: " + error));
   }
 }
 

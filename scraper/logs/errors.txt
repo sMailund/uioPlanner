@@ -3,3 +3,93 @@ Scraping results 2017-07-04T20:29:48.892Z
 Could not scrape: http://www.uio.no/studier/emner/matnat/math/MAT-INF3600/h17/timeplan/index.html
 Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF3490/h17/timeplan/index.html
 Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/IN1150/h17/timeplan/index.html
+
+Scraping results 2017-07-25T09:29:14.055Z
+Could not scrape: http://www.uio.no/studier/emner/matnat/its/UNIK9900/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/its/UNIK9810/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/its/UNIK9800/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/its/UNIK9740/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/its/UNIK9700/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/its/UNIK9590/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/its/UNIK9560/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/its/UNIK9450/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/its/UNIK9430/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/its/UNIK9420/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/its/UNIK9380/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/its/UNIK9361/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/its/UNIK9270/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/its/UNIK9220/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/its/UNIK9200/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/its/UNIK9100/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/its/UNIK4570/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/its/UNIK4500/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/MNSES9100/h17/timeplan/index.html - reason: TypeError: Cannot read property 'split' of undefined
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/ITLED5930/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/ITLED4300/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/ITLED4290/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/ITLED4260/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/ITLED4230/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/ITLED4220/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/ITLED4050/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/ITLED4041/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/ITLED4021/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF9880/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF9850/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF9750/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF9722/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF9631/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF9591/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF9520/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF9481/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF9442/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF9305/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF9210/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF9207/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF9205/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF9181/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF9150/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF9145/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF9135/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF9130/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF9090/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF9063/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF9040/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF9011/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF5880/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF5850/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF5631/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF5591/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF5207/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF5205/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF5100NSA/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF5013NSA/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF5012NSA/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF5011/h17/timeplan/index.html - reason: TypeError: Cannot read property 'split' of undefined
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF4930/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF4490/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF4470/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF4431/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF4411/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF4331/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF4171/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF4018NSA/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF4017NSA/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF-GEO4310/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF-BIO9121/h17/timeplan/index.html - reason: Scraper returned empty JSON
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/INF-BIO5121/h17/timeplan/index.html - reason: TypeError: Cannot read property 'split' of undefined
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/IN1150/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+
+Scraping results 2017-07-25T09:46:15.312Z
+
+Scraping results 2017-07-25T09:46:42.176Z
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/IN1150/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+
+Scraping results 2017-07-25T09:51:15.266Z
+
+Scraping results 2017-07-25T09:51:32.082Z
+
+Scraping results 2017-07-25T09:55:27.816Z
+
+Scraping results 2017-07-25T09:55:57.121Z
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/IN1150/h17/timeplan/index.html - reason: Scraper failed to find correct div, most likely 404
+Could not scrape: http://www.uio.no/studier/emner/matnat/ifi/IN-KJM1900/h17/timeplan/index.html - reason: Scraper returned empty JSON
