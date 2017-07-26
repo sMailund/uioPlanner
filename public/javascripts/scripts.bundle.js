@@ -31000,82 +31000,80 @@ return zhTw;
 /* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
-window.searchControll = __webpack_require__(138);
+"use strict";
 
+
+window.searchControll = __webpack_require__(138);
 
 /***/ }),
 /* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {/*jshint esversion: 6 */
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
 
-const http = __webpack_require__(10);
-const courseRenderer = __webpack_require__(158);
+/*jshint esversion: 6 */
 
-let courseList = ""; //create placeholder variable for courselist
+var http = __webpack_require__(10);
+var courseRenderer = __webpack_require__(158);
+
+var courseList = ""; //create placeholder variable for courselist
 _getCourseList(); //load courselist from api
 
 //TODO: flytt over til egen modul
 //fetch course list from api and add it to courseList
 function _getCourseList() {
-  let url = '/api/courseList';
-  http.get(url, function(res){
-    let body = '';
+  var url = '/api/courseList';
+  http.get(url, function (res) {
+    var body = '';
 
-    res.on('data', function(chunk){
-        body += chunk;
+    res.on('data', function (chunk) {
+      body += chunk;
     });
 
-    return res.on('end', function(){
+    return res.on('end', function () {
       courseList = JSON.parse(body);
     });
-  }).on('error', function(e){
-        console.log("Got an error: ", e);
+  }).on('error', function (e) {
+    console.log("Got an error: ", e);
   });
 }
 
 //render clickable list of suggestions,
 //is fired for evey character entered in the search box
 function renderSuggestions() {
-  let searchBox = $("#courseSearchBox"); //the search box
-  let search = searchBox.val(); //search query entered in the search box
-  let results = $("#results"); //div to display elements in
-  let maxResults = 10; //maximum number of results displayed, rest is truncated
+  var searchBox = $("#courseSearchBox"); //the search box
+  var search = searchBox.val(); //search query entered in the search box
+  var results = $("#results"); //div to display elements in
+  var maxResults = 10; //maximum number of results displayed, rest is truncated
 
   results.empty(); //remove previously displayed results
 
   //if the search box isn't empty
-  if(search) {
-    let numberOfResults = 0; //number of results found so far
-    courseList.forEach(function(course) {
-      courseString = course.course_id + " - " + course.course_name; //create name string
+  if (search) {
+    var numberOfResults = 0; //number of results found so far
+    courseList.forEach(function (course) {
+      var courseString = course.course_id + " - " + course.course_name; //create name string
 
       //look for index of first match, will be -1 if no match is found
-      let firstOccurence = courseString.toLowerCase().indexOf(search.toLowerCase());
+      var firstOccurence = courseString.toLowerCase().indexOf(search.toLowerCase());
       if (firstOccurence !== -1) {
         numberOfResults++;
         //only render results untill maximum is reached
         if (numberOfResults <= maxResults) {
           //highlight match without losing case
-          courseString = courseString.substring(0, firstOccurence) + "<b>" +
-          courseString.substring(firstOccurence, firstOccurence + search.length) + "</b>" +
-          courseString.substring(firstOccurence + search.length, courseString.length);
+          courseString = courseString.substring(0, firstOccurence) + "<b>" + courseString.substring(firstOccurence, firstOccurence + search.length) + "</b>" + courseString.substring(firstOccurence + search.length, courseString.length);
 
-          let id = "result" + numberOfResults; //id of element to be added
+          var id = "result" + numberOfResults; //id of element to be added
 
           //render result
-          results.append(
-            $("<div />")
-            .html(courseString)
-            .addClass("suggestionBox")
-            .attr("id", id)
-            .data("courseId", course.course_id) //add couse id to data
+          results.append($("<div />").html(courseString).addClass("suggestionBox").attr("id", id).data("courseId", course.course_id) //add couse id to data
           );
 
           //add event listener to added element
-          $('div#' + id).on('click', function() {
+          $('div#' + id).on('click', function () {
             //render the course assosiated with clicked element
-            let clickedElement = $("#" + this.id);
+            var clickedElement = $("#" + this.id);
             courseRenderer.renderCourse(clickedElement.data("courseId"));
 
             //remove search suggestions and text in search box
@@ -31088,20 +31086,14 @@ function renderSuggestions() {
 
     //list truncated results
     if (numberOfResults > maxResults) {
-      results.append(
-            $("<div />")
-            .html("...and " + (numberOfResults - maxResults) + " more")
-            .addClass("suggestionBox")
-            .attr("id", "truncated")
-      );
+      results.append($("<div />").html("...and " + (numberOfResults - maxResults) + " more").addClass("suggestionBox").attr("id", "truncated"));
     }
   }
 }
 
 module.exports = {
-  renderSuggestions
+  renderSuggestions: renderSuggestions
 };
-
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
@@ -33919,157 +33911,116 @@ var objectKeys = Object.keys || function (obj) {
 /* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {/*jshint esversion: 6 */
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
+
+/*jshint esversion: 6 */
 
 //TODO: untangle the spaghetti
 //TODO: comments
 
-let jquery = __webpack_require__(3);
-let http = __webpack_require__(10);
-let calendar = __webpack_require__(159);
+var jquery = __webpack_require__(3);
+var http = __webpack_require__(10);
+var calendar = __webpack_require__(159);
 
-let numberOfCourses = 0;
+var numberOfCourses = 0;
 
 //TODO: error handling
 
 function renderCourse(courseCode) {
-  let url = '/api/course?code=' + courseCode;
-  http.get(url, function(res){
-    let body = '';
+  var url = '/api/course?code=' + courseCode;
+  http.get(url, function (res) {
+    var body = '';
 
-    res.on('data', function(chunk){
-        body += chunk;
+    res.on('data', function (chunk) {
+      body += chunk;
     });
 
-    res.on('end', function(){
-        let response = JSON.parse(body);
-        _createCourseBox(response, numberOfCourses++);
+    res.on('end', function () {
+      var response = JSON.parse(body);
+      _createCourseBox(response, numberOfCourses++);
     });
-  }).on('error', function(e){
-        console.log("Got an error: ", e);
+  }).on('error', function (e) {
+    console.log("Got an error: ", e);
   });
 }
 
 function _createCourseBox(json, courseNum) {
 
   //create new div
-  $("#courses").append(
-    $('<div />')
-    .attr("id", "course" + courseNum)
-    .addClass("courseContainer")
-    .data("courseId", json[0].course_id)
-      .append(
-        $("<h2 />")
-        .text(json[0].course_id)
-      )
-      .append(
-        $('<div />')
-        .attr("id", "course" + courseNum + "felles")
-        .append(
-          $('<h3 />')
-          .text("Fellesundervisning")
-        )
-      )
-      .append(
-        $('<div />')
-        .attr("id", "course" + courseNum + "gruppe")
-        .append(
-          $('<h3 />')
-          .text("Gruppeundervisning")
-        )
-      )
-    );
+  $("#courses").append($('<div />').attr("id", "course" + courseNum).addClass("courseContainer").data("courseId", json[0].course_id).append($("<h2 />").text(json[0].course_id)).append($('<div />').attr("id", "course" + courseNum + "felles").append($('<h3 />').text("Fellesundervisning"))).append($('<div />').attr("id", "course" + courseNum + "gruppe").append($('<h3 />').text("Gruppeundervisning"))));
 
-    _parseActivities(courseNum, json);
+  _parseActivities(courseNum, json);
 }
 
 function _parseActivities(courseNum, json) {
-    let fellesAktiviteter = json[0].activities.Fellesundervisning;
-    if (fellesAktiviteter) { //sjekk om det er noen fellesAktiviteter å vise
-      //og vis dem i riktig div hvis det er noen
-      let fellesDiv = $("#course" + courseNum + "felles");
-      _createActivities(fellesAktiviteter,
-        courseNum,
-        fellesDiv);
-    }
+  var fellesAktiviteter = json[0].activities.Fellesundervisning;
+  if (fellesAktiviteter) {
+    //sjekk om det er noen fellesAktiviteter å vise
+    //og vis dem i riktig div hvis det er noen
+    var fellesDiv = $("#course" + courseNum + "felles");
+    _createActivities(fellesAktiviteter, courseNum, fellesDiv);
+  }
 
-    //hacky løsning på at noen kurs er på engelsk, kan forbedres, men funker
-    let plenary = json[0].activities["Plenary sessions"];
-    if (plenary) { //sjekk om det er noen fellesAktiviteter å vise
-      //og vis dem i riktig div hvis det er noen
-      let fellesDiv = $("#course" + courseNum + "felles");
-      fellesDiv.children("h3").text("Plenary Sessions");
-      _createActivities(plenary,
-        courseNum,
-        fellesDiv);
-    }
+  //hacky løsning på at noen kurs er på engelsk, kan forbedres, men funker
+  var plenary = json[0].activities["Plenary sessions"];
+  if (plenary) {
+    //sjekk om det er noen fellesAktiviteter å vise
+    //og vis dem i riktig div hvis det er noen
+    var _fellesDiv = $("#course" + courseNum + "felles");
+    _fellesDiv.children("h3").text("Plenary Sessions");
+    _createActivities(plenary, courseNum, _fellesDiv);
+  }
 
-    let gruppeAktiviteter = json[0].activities.Gruppeundervisning;
-    if (gruppeAktiviteter) { //sjekk om det er noen gruppeAktiviteter å vise
-      //og vis dem i riktig div hvis det er noen
-      let gruppeDiv = $("#course" + courseNum + "gruppe");
-      _createActivities(gruppeAktiviteter,
-        courseNum,
-        gruppeDiv);
-    }
+  var gruppeAktiviteter = json[0].activities.Gruppeundervisning;
+  if (gruppeAktiviteter) {
+    //sjekk om det er noen gruppeAktiviteter å vise
+    //og vis dem i riktig div hvis det er noen
+    var gruppeDiv = $("#course" + courseNum + "gruppe");
+    _createActivities(gruppeAktiviteter, courseNum, gruppeDiv);
+  }
 
-    let group = json[0].activities["Group sessions"];
-    if (group) { //sjekk om det er noen gruppeAktiviteter å vise
-      //og vis dem i riktig div hvis det er noen
-      let gruppeDiv = $("#course" + courseNum + "gruppe");
-      gruppeDiv.children("h3").text("Group Sessions");
-      _createActivities(group,
-        courseNum,
-        gruppeDiv);
-    }
+  var group = json[0].activities["Group sessions"];
+  if (group) {
+    //sjekk om det er noen gruppeAktiviteter å vise
+    //og vis dem i riktig div hvis det er noen
+    var _gruppeDiv = $("#course" + courseNum + "gruppe");
+    _gruppeDiv.children("h3").text("Group Sessions");
+    _createActivities(group, courseNum, _gruppeDiv);
+  }
 }
 
 function _createActivities(activities, coursenum, div) {
-  let activityNum = 0;
+  var activityNum = 0;
 
-  activities.forEach(function(activity) {
+  activities.forEach(function (activity) {
     activityNum++;
-    let checkboxId = div.prop("id") + "-a" + activityNum;
-    let spanId = checkboxId + "-span";
+    var checkboxId = div.prop("id") + "-a" + activityNum;
+    var spanId = checkboxId + "-span";
 
-    div.append(
-      $('<span />')
-        .attr("id", spanId)
-        .addClass("courseSpan")
-        .append(
-          $('<input />')
-            .attr("type", "checkbox")
-            .attr("id", checkboxId)
-            .data("activities", activity)
-        )
-        .append(
-          $('<label />')
-          .attr("for", checkboxId)
-          .text(activity.title + " - " + activity.timeRaw) 
-        )
-    );
+    div.append($('<span />').attr("id", spanId).addClass("courseSpan").append($('<input />').attr("type", "checkbox").attr("id", checkboxId).data("activities", activity)).append($('<label />').attr("for", checkboxId).text(activity.title + " - " + activity.timeRaw)));
 
     div.append($('<br>'));
 
     //create shadow event when activity is hovered to make planning easier
-    $('#' + spanId).hover(function() {
-      let hoveredActivity = $('#' + this.id).find("input");
-      let eventData = hoveredActivity.data("activities");
-      let courseName = hoveredActivity.parents(".courseContainer").data("courseId");
+    $('#' + spanId).hover(function () {
+      var hoveredActivity = $('#' + this.id).find("input");
+      var eventData = hoveredActivity.data("activities");
+      var courseName = hoveredActivity.parents(".courseContainer").data("courseId");
       if (!hoveredActivity.is(":checked")) {
         calendar.addHover(eventData, courseName);
       }
-    },
-    function() { //fires when the activity is unhovered
+    }, function () {
+      //fires when the activity is unhovered
       calendar.removeHover();
     });
 
     //fires when the checkbox is toggled
-    div.on("click", "input#" + checkboxId, function() {
+    div.on("click", "input#" + checkboxId, function () {
       //finn data som hører til html-elementet
-      let clickedElement = $("#" + this.id);
-      let eventData = clickedElement.data("activities");
-      let courseName = clickedElement.parents(".courseContainer").data("courseId");
+      var clickedElement = $("#" + this.id);
+      var eventData = clickedElement.data("activities");
+      var courseName = clickedElement.parents(".courseContainer").data("courseId");
 
       if (this.checked) {
         calendar.addEvents(eventData, courseName, coursenum); //vis eventen i kalenderen
@@ -34083,71 +34034,69 @@ function _createActivities(activities, coursenum, div) {
 }
 
 module.exports = {
-  renderCourse
+  renderCourse: renderCourse
 };
-
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
 /* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {/*jshint esversion: 6 */
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {
 
-const moment = __webpack_require__(0);
-const fullcalendar = __webpack_require__(161);
-const jquery = __webpack_require__(3);
+/*jshint esversion: 6 */
 
-const colors = ["#09632d",
-                "#1c3144",
-                "#461220",
-                "#2f2d2e",
-                "#c33c54"];
+var moment = __webpack_require__(0);
+var fullcalendar = __webpack_require__(161);
+var jquery = __webpack_require__(3);
 
-$(document).ready(function() {
+var colors = ["#09632d", "#1c3144", "#461220", "#2f2d2e", "#c33c54"];
+
+$(document).ready(function () {
   $('#calendar').fullCalendar({
-          defaultView: 'agendaWeek',
-          defaultDate: '2017-05-01',
-          allDaySlot: false, //fjern seksjon for heldagseventer
-          firstDay: 1, //første dag er mandag
-          columnFormat: 'dddd', //bare hvis ukedagsnavn, ikke dato
-          minTime: '08:00:00', //tidligste time er kl 8
-          maxTime: '19:00:00', //og vis helt ned til kl 1 9
-          slotLabelFormat: 'H:mm', //24-timersklokke
-          height: 'parent',
-          header: '', //fjern alle defaultgreier fra kalenderen
-          weekends: false,
+    defaultView: 'agendaWeek',
+    defaultDate: '2017-05-01',
+    allDaySlot: false, //fjern seksjon for heldagseventer
+    firstDay: 1, //første dag er mandag
+    columnFormat: 'dddd', //bare hvis ukedagsnavn, ikke dato
+    minTime: '08:00:00', //tidligste time er kl 8
+    maxTime: '19:00:00', //og vis helt ned til kl 1 9
+    slotLabelFormat: 'H:mm', //24-timersklokke
+    height: 'parent',
+    header: '', //fjern alle defaultgreier fra kalenderen
+    weekends: false
   });
 });
 
-exports.addEvents = function(eventJSON, courseName, courseNum) {
-  let events = _createEventsObject(eventJSON, courseName, courseNum);
+exports.addEvents = function (eventJSON, courseName, courseNum) {
+  var events = _createEventsObject(eventJSON, courseName, courseNum);
   $('#calendar').fullCalendar('renderEvents', events);
 };
 
-exports.removeEvents = function(eventJSON, courseName, courseNum) {
-  let eventId = _createId(eventJSON, courseName, courseNum);
+exports.removeEvents = function (eventJSON, courseName, courseNum) {
+  var eventId = _createId(eventJSON, courseName, courseNum);
   $('#calendar').fullCalendar('removeEvents', eventId);
 };
 
-exports.addHover = function(eventJSON, courseName) {
-  let events = _createEventsObject(eventJSON, courseName, 0);
-  events.map(event => {
+exports.addHover = function (eventJSON, courseName) {
+  var events = _createEventsObject(eventJSON, courseName, 0);
+  events.map(function (event) {
     event.id = 'hover';
     event.color = "#b5b5b5"; //color event in grey
   });
   $('#calendar').fullCalendar('renderEvents', events);
 };
 
-exports.removeHover = function() {
+exports.removeHover = function () {
   $('#calendar').fullCalendar('removeEvents', 'hover');
 };
 
 function _createEventsObject(json, courseName, courseNum) {
-  let events = [];
+  var events = [];
 
-  json.timeISO.forEach(function(time) {
-    let event = {
+  json.timeISO.forEach(function (time) {
+    var event = {
       id: _createId(json, courseName, courseNum),
       title: courseName + " - " + json.title, //det burde også stå hvilket emne det gjelder
       start: time.start,
@@ -34163,7 +34112,6 @@ function _createEventsObject(json, courseName, courseNum) {
 function _createId(json, courseName, courseNum) {
   return courseNum + courseName + json.title;
 }
-
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),

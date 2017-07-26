@@ -39,7 +39,7 @@ function renderSuggestions() {
   if(search) {
     let numberOfResults = 0; //number of results found so far
     courseList.forEach(function(course) {
-      courseString = course.course_id + " - " + course.course_name; //create name string
+      let courseString = course.course_id + " - " + course.course_name; //create name string
 
       //look for index of first match, will be -1 if no match is found
       let firstOccurence = courseString.toLowerCase().indexOf(search.toLowerCase());
