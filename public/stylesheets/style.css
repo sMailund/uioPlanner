@@ -78,9 +78,13 @@ body {
 }
 
 #header {
+  font-size: 2.3em;
+  font-weight: 100;
+}
+
+#headerContainer {
+  margin: 0;
   margin-bottom: 1vw;
-  font-size: 4.5em;
-  font-weight: lighter;
 }
 
 #footer {
