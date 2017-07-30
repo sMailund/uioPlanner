@@ -1,6 +1,10 @@
-var webpack = require('webpack');
+/*jshint esversion: 6 */
 
-module.exports = {
+console.log(`Running webpack as ${process.env.NODE_ENV}`);
+
+const webpack = require('webpack');
+
+const config = {
   entry: './webpackEntry.js',
   output: {
     path: __dirname + '/public/javascripts',
@@ -18,8 +22,14 @@ module.exports = {
             $: "jquery",
             jQuery: "jquery"
         }),
-        new webpack.optimize.UglifyJsPlugin()
     ]
 };
 
-//hva med public output path??
+
+//push plugins that will only run during production
+if (process.env.NODE_ENV === 'production') {
+  config.plugins.push(new webpack.optimize.UglifyJsPlugin());
+}
+
+
+module.exports = config;

@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "dev": "start node ./bin/www && start webpack --watch"
+    "start": "set NODE_ENV=production&& webpack && node ./bin/www",
+    "dev": "set NODE_ENV=dev&& start node ./bin/www && start webpack --watch"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
