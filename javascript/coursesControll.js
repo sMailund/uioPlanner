@@ -39,7 +39,14 @@ function _createCourseBox(json, courseNum) {
     .data("courseId", json[0].course_id)
       .append(
         $("<h2 />")
-        .text(json[0].course_id)
+        .append ( //create button to delete course
+          $("<a />")
+          .attr("id", "delete" + courseNum)
+          .attr("href", "")
+          .addClass("delete")
+          .text("[x]")
+        )
+        .append(" " + json[0].course_id)
       )
       .append(
         $('<div />')
@@ -58,6 +65,11 @@ function _createCourseBox(json, courseNum) {
         )
       )
     );
+
+    $("#delete" + courseNum).click(function(evt) {
+      evt.preventDefault(); //prevent page from reloading on click
+      $("#course" + courseNum).remove(); //remove selected course
+    });
 
     _parseActivities(courseNum, json);
 }
@@ -124,7 +136,7 @@ function _createActivities(activities, coursenum, div) {
         .append(
           $('<label />')
           .attr("for", checkboxId)
-          .text(activity.title + " - " + activity.timeRaw) 
+          .text(activity.title + " - " + activity.timeRaw)
         )
     );
 
