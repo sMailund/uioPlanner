@@ -55,8 +55,6 @@ body {
 #calendar {
   flex: 5;
   min-height: 100%;
-  overflow-y: scroll;
-  overflow-x: hidden;
 }
 
 #content {
