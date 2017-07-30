@@ -21,10 +21,12 @@
 
       <div id="flex">
         <div id="addCourseDiv" class="contentBox">
-          <input type="text"
-            id="courseSearchBox"
-            placeholder="Search for a course"
-            onkeyup="window.searchControll.renderSuggestions()" />
+          <label>
+            <input type="text"
+              id="courseSearchBox"
+              placeholder="Search for a course"
+              onkeyup="window.searchControll.renderSuggestions()" />
+          </label>
           <div id="results" class="overlay"></div>
           <div id="courses"></div>
         </div>
