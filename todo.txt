@@ -1,0 +1,6 @@
+create new scraper with python
+change from single week to calendar
+disable uglify during dev
+full course title next to course-code
+replace [x] with prettier icon
+mobile
