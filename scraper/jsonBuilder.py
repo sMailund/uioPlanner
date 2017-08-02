@@ -26,8 +26,12 @@ def createCourseJSON(url, courseTitle):
     #extract activities from json
     for activity in activityJSON:
         new = __createActivityJSON(activityJSON[activity])
-        #because python can't handle æøå, jfc
-        if (new["type"] == "FOR" or new["type"].endswith("V-F")):
+
+        if (new["type"] == "FOR" \
+        #because python can't handle æøå
+        or new["type"].endswith("V-F")) \
+        or new["type"] == "SEMFOR" \
+        or new["type"] == "SEM-F":
             activities["Fellesundervisning"].append(new)
         else:
             activities["Gruppeundervisning"].append(new)
