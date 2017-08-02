@@ -7,12 +7,13 @@ import db
 import json
 import time
 
-entry = "http://www.uio.no/studier/emner/matnat/ifi/?filter.semester=h17"
+entry = "http://www.uio.no/studier/emner/hf/ifikk/?filter.semester=h17"
 semester = "h17"
 delay = 1
 
 def scrape():
     errorFile = open('errors.txt', 'wb')
+    db.init()
     courses = courseFinder.findCourses(entry)
     print "found %d courses" % len(courses)
 
@@ -31,6 +32,7 @@ def scrape():
             jsonDict["course_name"])
         time.sleep(delay)
 
+    db.finish()
     errorFile.close
 
 def __scrapeCourse(course):
