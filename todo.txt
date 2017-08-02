@@ -1,6 +1,8 @@
 create new scraper with python
 change from single week to calendar
-disable uglify during dev
+resolve how to know what is plenary and what is group
 full course title next to course-code
 replace [x] with prettier icon
 mobile
+change from "monday" to "mon"
+fix dev setup for linux
