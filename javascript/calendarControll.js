@@ -12,8 +12,8 @@ const colors = ["#09632d",
 
 $(document).ready(function() {
   $('#calendar').fullCalendar({
-          defaultView: 'agendaWeek',
-          defaultDate: '2017-05-01',
+          defaultView: 'month',
+          defaultDate: '2017-08-21',
           allDaySlot: false, //fjern seksjon for heldagseventer
           firstDay: 1, //første dag er mandag
           columnFormat: 'dddd', //bare hvis ukedagsnavn, ikke dato
@@ -21,7 +21,11 @@ $(document).ready(function() {
           maxTime: '19:00:00', //og vis helt ned til kl 1 9
           slotLabelFormat: 'H:mm', //24-timersklokke
           height: 'parent',
-          header: '', //fjern alle defaultgreier fra kalenderen
+          header: {
+            left: 'agendaDay,agendaWeek,month',
+            center: 'title',
+            right: 'today prev,next'
+          },
           weekends: false,
   });
 });
