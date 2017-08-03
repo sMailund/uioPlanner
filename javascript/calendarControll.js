@@ -52,12 +52,12 @@ exports.removeHover = function() {
 function _createEventsObject(json, courseName, courseNum) {
   let events = [];
 
-  json.timeISO.forEach(function(time) {
+  json.sessions.forEach(function(time) {
     let event = {
       id: _createId(json, courseName, courseNum),
       title: courseName + " - " + json.title, //det burde også stå hvilket emne det gjelder
-      start: time.start,
-      end: time.end,
+      start: time.startISO,
+      end: time.endISO,
       color: colors[courseNum]
     };
     events.push(event);
