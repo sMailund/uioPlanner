@@ -1,10 +1,11 @@
 
 baseurl = "http://www.uio.no"
-allCoursesPath = "/timeplan/index.html?action=course-schedule"
+schedulePath = "/timeplan/index.html"
+allCoursesPath = schedulePath + "?action=course-schedule"
 
-def buildURL(href, semester):
+def buildJsonURL(href, semester):
     path = href.split("/index.html")[0]
     return baseurl \
         + path \
         + ("/%s" % semester) \
-        +  allCoursesPath
+        + allCoursesPath

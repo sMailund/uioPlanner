@@ -22,8 +22,9 @@ def scrape():
         try:
             jsonDict = __scrapeCourse(course)
             courseJSON = __formatJSON(jsonDict["activities"])
-        except Exception:
+        except Exception as error:
             print("could not scrape %s" % course["href"])
+            print error
             errorFile.write(json.dumps(course) + "\n")
             continue
 
@@ -36,7 +37,7 @@ def scrape():
     errorFile.close
 
 def __scrapeCourse(course):
-    url = urlBuilder.buildURL(course["href"], semester)
+    url = urlBuilder.buildJsonURL(course["href"], semester)
     return jsonBuilder.createCourseJSON(url, course["title"])
 
 def __formatJSON(dict):
