@@ -34,10 +34,10 @@ def insert(json, courseId, courseName):
 def finish():
     connection = getConnection()
     cur = connection.cursor()
-    cur.execute(sql.SQL("SELECT * INTO {} FROM python"). \
+    cur.execute(sql.SQL("SELECT * INTO {} FROM courses"). \
         format(sql.Identifier(__createBackupName())))
-    cur.execute("DELETE FROM python")
-    cur.execute("INSERT INTO python SELECT * FROM scraping")
+    cur.execute("DELETE FROM courses")
+    cur.execute("INSERT INTO courses SELECT * FROM scraping")
     cur.execute("DROP TABLE scraping")
 
     connection.commit()
