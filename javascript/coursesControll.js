@@ -136,7 +136,7 @@ function _createActivities(activities, coursenum, div) {
         .append(
           $('<label />')
           .attr("for", checkboxId)
-          .text(activity.title + " - " + activity.timeRaw)
+          .text(activity.title)
         )
     );
 

@@ -34004,7 +34004,7 @@ function _createActivities(activities, coursenum, div) {
     var checkboxId = div.prop("id") + "-a" + activityNum;
     var spanId = checkboxId + "-span";
 
-    div.append($('<span />').attr("id", spanId).addClass("courseSpan").append($('<input />').attr("type", "checkbox").attr("id", checkboxId).data("activities", activity)).append($('<label />').attr("for", checkboxId).text(activity.title + " - " + activity.timeRaw)));
+    div.append($('<span />').attr("id", spanId).addClass("courseSpan").append($('<input />').attr("type", "checkbox").attr("id", checkboxId).data("activities", activity)).append($('<label />').attr("for", checkboxId).text(activity.title)));
 
     div.append($('<br>'));
 
