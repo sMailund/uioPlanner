@@ -46,7 +46,7 @@ function _createCourseBox(json, courseNum) {
           .addClass("delete")
           .text("[x]")
         )
-        .append(" " + json[0].course_id)
+        .append(" " + json[0].course_id + " - " + json[0].course_name)
       )
       .append(
         $('<div />')

@@ -33949,7 +33949,7 @@ function _createCourseBox(json, courseNum) {
 
   //create new div
   $("#courses").append($('<div />').attr("id", "course" + courseNum).addClass("courseContainer").data("courseId", json[0].course_id).append($("<h2 />").append( //create button to delete course
-  $("<a />").attr("id", "delete" + courseNum).attr("href", "").addClass("delete").text("[x]")).append(" " + json[0].course_id)).append($('<div />').attr("id", "course" + courseNum + "felles").append($('<h3 />').text("Fellesundervisning"))).append($('<div />').attr("id", "course" + courseNum + "gruppe").append($('<h3 />').text("Gruppeundervisning"))));
+  $("<a />").attr("id", "delete" + courseNum).attr("href", "").addClass("delete").text("[x]")).append(" " + json[0].course_id + " - " + json[0].course_name)).append($('<div />').attr("id", "course" + courseNum + "felles").append($('<h3 />').text("Fellesundervisning"))).append($('<div />').attr("id", "course" + courseNum + "gruppe").append($('<h3 />').text("Gruppeundervisning"))));
 
   $("#delete" + courseNum).click(function (evt) {
     evt.preventDefault(); //prevent page from reloading on click

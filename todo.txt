@@ -1,8 +1,5 @@
-create new scraper with python
-change from single week to calendar
-correct title on activities
-resolve how to know what is plenary and what is group
-full course title next to course-code
+more event colors
+stop calendar shaking when adding events
 replace [x] with prettier icon
 mobile
 change from "monday" to "mon 21/4"
