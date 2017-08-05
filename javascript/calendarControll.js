@@ -59,7 +59,7 @@ function _createEventsObject(json, courseName, courseNum) {
   json.sessions.forEach(function(time) {
     let event = {
       id: _createId(json, courseName, courseNum),
-      title: courseName + " - " + json.title, //det burde også stå hvilket emne det gjelder
+      title: courseName + " - " + time.title,
       start: time.startISO,
       end: time.endISO,
       color: colors[courseNum]
