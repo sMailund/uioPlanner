@@ -1,6 +1,8 @@
+remove events from calendar when course is deleted
 more event colors
 stop calendar shaking when adding events
 replace [x] with prettier icon
+server configuration
 mobile
 change from "monday" to "mon 21/4"
 navigate from month to week by clicking on week
