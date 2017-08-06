@@ -34082,7 +34082,7 @@ $(document).ready(function () {
 
 exports.addEvents = function (eventJSON, courseName, courseNum) {
   var events = _createEventsObject(eventJSON, courseName, courseNum);
-  $('#calendar').fullCalendar('renderEvents', events);
+  $('#calendar').fullCalendar('renderEvents', events, true);
 };
 
 exports.removeEvents = function (eventJSON, courseName, courseNum) {

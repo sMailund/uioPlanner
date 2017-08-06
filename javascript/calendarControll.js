@@ -32,7 +32,7 @@ $(document).ready(function() {
 
 exports.addEvents = function(eventJSON, courseName, courseNum) {
   let events = _createEventsObject(eventJSON, courseName, courseNum);
-  $('#calendar').fullCalendar('renderEvents', events);
+  $('#calendar').fullCalendar('renderEvents', events, true);
 };
 
 exports.removeEvents = function(eventJSON, courseName, courseNum) {
@@ -67,7 +67,7 @@ function _createEventsObject(json, courseName, courseNum) {
       title: courseName + " - " + time.title,
       start: time.startISO,
       end: time.endISO,
-      color: colors[courseNum]
+      color: colors[courseNum],
     };
     events.push(event);
   });
