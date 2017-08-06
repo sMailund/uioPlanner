@@ -33954,6 +33954,7 @@ function _createCourseBox(json, courseNum) {
   $("#delete" + courseNum).click(function (evt) {
     evt.preventDefault(); //prevent page from reloading on click
     $("#course" + courseNum).remove(); //remove selected course
+    calendar.removeActivity(courseNum);
   });
 
   _parseActivities(courseNum, json);
@@ -34100,6 +34101,12 @@ exports.addHover = function (eventJSON, courseName) {
 
 exports.removeHover = function () {
   $('#calendar').fullCalendar('removeEvents', 'hover');
+};
+
+exports.removeActivity = function (eventNumber) {
+  $('#calendar').fullCalendar('removeEvents', function (event) {
+    return event.id.startsWith(eventNumber);
+  });
 };
 
 function _createEventsObject(json, courseName, courseNum) {

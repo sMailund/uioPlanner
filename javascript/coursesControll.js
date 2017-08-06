@@ -69,6 +69,7 @@ function _createCourseBox(json, courseNum) {
     $("#delete" + courseNum).click(function(evt) {
       evt.preventDefault(); //prevent page from reloading on click
       $("#course" + courseNum).remove(); //remove selected course
+      calendar.removeActivity(courseNum);
     });
 
     _parseActivities(courseNum, json);

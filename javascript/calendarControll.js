@@ -53,6 +53,11 @@ exports.removeHover = function() {
   $('#calendar').fullCalendar('removeEvents', 'hover');
 };
 
+exports.removeActivity = function(eventNumber) {
+  $('#calendar').fullCalendar('removeEvents',
+    event => event.id.startsWith(eventNumber));
+};
+
 function _createEventsObject(json, courseName, courseNum) {
   let events = [];
 
