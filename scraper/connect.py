@@ -5,5 +5,5 @@ username = "scraper"
 password = "scraper"
 
 def getConnection():
-    return psycopg2.connect("dbname={0} user={1} password={2}"\
+    return psycopg2.connect("dbname={0} user={1} password={2} host='localhost'"\
         .format(dbname, username, password))
