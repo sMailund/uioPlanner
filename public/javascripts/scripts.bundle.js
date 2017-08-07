@@ -34058,7 +34058,7 @@ var moment = __webpack_require__(0);
 var fullcalendar = __webpack_require__(161);
 var jquery = __webpack_require__(3);
 
-var colors = ["#09632d", "#1c3144", "#461220", "#2f2d2e", "#c33c54"];
+var colors = ["#09632d", "#1c3144", "#461220", "#2f2d2e", "#c33c54", "#940094", "#7d4500"];
 
 $(document).ready(function () {
   $('#calendar').fullCalendar({

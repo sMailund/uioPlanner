@@ -8,7 +8,9 @@ const colors = ["#09632d",
                 "#1c3144",
                 "#461220",
                 "#2f2d2e",
-                "#c33c54"];
+                "#c33c54",
+                "#940094",
+                "#7d4500"];
 
 $(document).ready(function() {
   $('#calendar').fullCalendar({
