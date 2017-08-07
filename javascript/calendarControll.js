@@ -16,7 +16,6 @@ $(document).ready(function() {
           defaultDate: '2017-08-21',
           allDaySlot: false, //fjern seksjon for heldagseventer
           firstDay: 1, //første dag er mandag
-          columnFormat: 'ddd M/D', //bare hvis ukedagsnavn, ikke dato
           minTime: '08:00:00', //tidligste time er kl 8
           maxTime: '19:00:00', //og vis helt ned til kl 1 9
           slotLabelFormat: 'H:mm', //24-timersklokke
@@ -27,6 +26,17 @@ $(document).ready(function() {
             right: 'today prev,next'
           },
           weekends: false,
+          views: {
+            month: {
+              columnFormat: 'ddd'
+            },
+            agendaWeek: {
+              columnFormat: 'ddd M/D'
+            },
+            agendaDay: {
+              columnFormat: 'dddd M/D'
+            }
+          }
   });
 });
 
