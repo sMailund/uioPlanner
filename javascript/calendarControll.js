@@ -66,8 +66,10 @@ exports.removeHover = function() {
 };
 
 exports.removeActivity = function(eventNumber) {
+  //see if the event starts with
+  //the eventnumber that is being deleted
   $('#calendar').fullCalendar('removeEvents',
-    event => event.id.startsWith(eventNumber));
+    event => event.id.indexOf(eventNumber) === 0);
 };
 
 function _createEventsObject(json, courseName, courseNum) {

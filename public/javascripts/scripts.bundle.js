@@ -34114,8 +34114,10 @@ exports.removeHover = function () {
 };
 
 exports.removeActivity = function (eventNumber) {
+  //see if the event starts with
+  //the eventnumber that is being deleted
   $('#calendar').fullCalendar('removeEvents', function (event) {
-    return event.id.startsWith(eventNumber);
+    return event.id.indexOf(eventNumber) === 0;
   });
 };
 

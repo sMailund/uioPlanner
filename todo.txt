@@ -1,4 +1,3 @@
-fix ie remove all error
 stop calendar shaking when adding events
 replace [x] with prettier icon and add search icon
 searchbar stick to top
@@ -6,4 +5,5 @@ read licenses
 server configuration
 mobile
 navigate from month to week by clicking on week
+ad internet explorer warning
 fix dev setup for linux
