@@ -21,13 +21,17 @@
 
       <div id="flex">
         <div id="addCourseDiv" class="contentBox">
-          <input type="text"
-            id="courseSearchBox"
-            placeholder="Search for a course"
-            title="search for a course"
-            onkeyup="window.searchControll.renderSuggestions()" />
-          <div id="results" class="overlay"></div>
-          <div id="courses"></div>
+          <div id="searchdiv">
+            <input type="text"
+              id="courseSearchBox"
+              placeholder="Search for a course"
+              title="search for a course"
+              onkeyup="window.searchControll.renderSuggestions()" />
+            <div id="results" class="overlay"></div>
+          </div>
+          <div id="coursediv">
+            <div id="courses"></div>
+          </div>
         </div>
         <div id="calendar"></div>
       </div>
@@ -41,6 +45,5 @@
       </div>
     </div>
   </div>
-
 </body>
 </html>
