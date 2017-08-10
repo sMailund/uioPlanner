@@ -1,6 +1,8 @@
-more event colors
+fix ie remove all error
 stop calendar shaking when adding events
-replace [x] with prettier icon
+replace [x] with prettier icon and add search icon
+searchbar stick to top
+read licenses
 server configuration
 mobile
 navigate from month to week by clicking on week
