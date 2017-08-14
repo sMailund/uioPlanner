@@ -31091,9 +31091,10 @@ function renderSuggestions() {
   }
 }
 
-module.exports = {
-  renderSuggestions: renderSuggestions
-};
+//add event handler to searchbox
+$(document).ready(function () {
+  $("#courseSearchBox").keyup(renderSuggestions);
+});
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
@@ -34114,8 +34115,10 @@ exports.removeHover = function () {
 };
 
 exports.removeActivity = function (eventNumber) {
+  //see if the event starts with
+  //the eventnumber that is being deleted
   $('#calendar').fullCalendar('removeEvents', function (event) {
-    return event.id.startsWith(eventNumber);
+    return event.id.indexOf(eventNumber) === 0;
   });
 };
 

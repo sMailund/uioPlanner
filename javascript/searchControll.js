@@ -89,6 +89,7 @@ function renderSuggestions() {
   }
 }
 
-module.exports = {
-  renderSuggestions
-};
+//add event handler to searchbox
+$(document).ready(() => {
+  $("#courseSearchBox").keyup(renderSuggestions);
+});
