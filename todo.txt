@@ -1,6 +1,5 @@
 stop calendar shaking when adding events
 replace [x] with prettier icon and add search icon
-searchbar stick to top
 read licenses
 server configuration
 mobile
