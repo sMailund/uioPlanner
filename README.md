@@ -1,6 +1,6 @@
 Easier scheduling at the university of oslo
 
-WIP sideproject, due to be released late 2017
+Available at [semesterplanner.xyz](http://www.semesterplanner.xyz) 
 
 Get a visual overlook of your schedule when planning for the next semester
 ![showcase image 1](readmeImg/showcase1.jpg)
