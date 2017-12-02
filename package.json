@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "export NODE_ENV=production|| set NODE_ENV=production&& webpack && node ./bin/www",
-    "dev": "export NODE_ENV=dev|| set NODE_ENV=dev 2> nul && start node ./bin/www && start webpack --watch"
+    "dev": "export NODE_ENV=dev|| set NODE_ENV=dev 2> nul && webpack && node ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.17.1",

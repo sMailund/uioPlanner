@@ -15,12 +15,13 @@ const colors = ["#09632d",
 $(document).ready(function() {
   $('#calendar').fullCalendar({
           defaultView: 'month',
-          defaultDate: '2017-08-21',
+          defaultDate: '2018-01-01',
           allDaySlot: false, //fjern seksjon for heldagseventer
           firstDay: 1, //første dag er mandag
           minTime: '08:00:00', //tidligste time er kl 8
-          maxTime: '19:00:00', //og vis helt ned til kl 1 9
+          maxTime: '22:00:00', //og vis helt ned til kl 1 9
           slotLabelFormat: 'H:mm', //24-timersklokke
+	  timeFormat: 'H:mm',
           height: 'parent',
           header: {
             left: 'agendaDay,agendaWeek,month',

@@ -7,8 +7,8 @@ import db
 import json
 import time
 
-entry = "http://www.uio.no/studier/emner/hf/ifikk/?filter.semester=h17"
-semester = "h17"
+semester = "v18"
+entry = "http://www.uio.no/studier/emner/alle/?filter.semester=" + semester
 delay = 1
 
 def scrape():

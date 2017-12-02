@@ -76,7 +76,10 @@ function _createCourseBox(json, courseNum) {
 }
 
 function _parseActivities(courseNum, json) {
-    let fellesAktiviteter = json[0].activities.Fellesundervisning;
+//TODO: pass paa at dette fikser over alt, det er litt ducttape
+let convertedJSON = JSON.parse(json[0].activities);
+    let fellesAktiviteter = convertedJSON.Fellesundervisning;
+
     if (fellesAktiviteter) { //sjekk om det er noen fellesAktiviteter å vise
       //og vis dem i riktig div hvis det er noen
       let fellesDiv = $("#course" + courseNum + "felles");
@@ -96,7 +99,7 @@ function _parseActivities(courseNum, json) {
         fellesDiv);
     }
 
-    let gruppeAktiviteter = json[0].activities.Gruppeundervisning;
+    let gruppeAktiviteter = convertedJSON.Gruppeundervisning;
     if (gruppeAktiviteter) { //sjekk om det er noen gruppeAktiviteter å vise
       //og vis dem i riktig div hvis det er noen
       let gruppeDiv = $("#course" + courseNum + "gruppe");
@@ -105,7 +108,7 @@ function _parseActivities(courseNum, json) {
         gruppeDiv);
     }
 
-    let group = json[0].activities["Group sessions"];
+    let group = convertedJSON["Group sessions"];
     if (group) { //sjekk om det er noen gruppeAktiviteter å vise
       //og vis dem i riktig div hvis det er noen
       let gruppeDiv = $("#course" + courseNum + "gruppe");

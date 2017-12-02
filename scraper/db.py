@@ -11,7 +11,7 @@ def init():
     cur.execute("CREATE TABLE scraping (\
         course_id text NOT NULL, \
         course_name text NOT NULL, \
-        activities jsonb NOT NULL)"
+        activities text NOT NULL)"
         )
 
     connection.commit()
