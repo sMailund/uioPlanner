@@ -12,7 +12,6 @@ entry = "http://www.uio.no/studier/emner/alle/?filter.semester=" + semester
 delay = 1
 
 def scrape():
-    errorFile = open('errors.txt', 'wb')
     db.init()
     courses = courseFinder.findCourses(entry)
     print "found %d courses" % len(courses)
@@ -25,7 +24,6 @@ def scrape():
         except Exception as error:
             print("could not scrape %s" % course["href"])
             print error
-            errorFile.write(json.dumps(course) + "\n")
             continue
 
         db.insert(courseJSON, \
@@ -34,7 +32,6 @@ def scrape():
         time.sleep(delay)
 
     db.finish()
-    errorFile.close
 
 def __scrapeCourse(course):
     url = urlBuilder.buildJsonURL(course["href"], semester)
