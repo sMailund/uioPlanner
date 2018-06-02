@@ -2,3 +2,4 @@ node_modules/*
 *.pyc
 
 scraper/examples/
+public/javascripts/scripts.bundle.js
