@@ -17,7 +17,7 @@ def createCourseJSON(url, courseTitle):
         raise Exception("Empty json")
 
     #get course name and id
-    splitted = courseTitle.split(" - ")
+    splitted = courseTitle.split(u' \u2013 ')
     output["course_id"] = splitted[0]
     output["course_name"] = splitted[1]
 
