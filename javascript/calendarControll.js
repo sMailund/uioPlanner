@@ -15,7 +15,7 @@ const colors = ["#09632d",
 $(document).ready(function() {
   $('#calendar').fullCalendar({
           defaultView: 'month',
-          defaultDate: '2018-01-01',
+          defaultDate: '2018-08-13',
           allDaySlot: false, //fjern seksjon for heldagseventer
           firstDay: 1, //første dag er mandag
           minTime: '08:00:00', //tidligste time er kl 8
