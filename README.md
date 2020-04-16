@@ -1,4 +1,4 @@
-*NOTE: this project is not actively maintained, I created this as a sideproject to learn learn web development when I was first starting out. Feel free to fork or create similar pages with the same concept*
+**NOTE: this project is not actively maintained, I created this as a sideproject to learn learn web development when I was first starting out. Feel free to fork or create similar pages with the same concept**
 
 Easier scheduling at the university of oslo
 
